@@ -8,8 +8,6 @@ const logger = require('morgan')
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
-const index = require('./routes/index')
-const users = require('./routes/users')
 
 const app = express()
 
@@ -25,7 +23,14 @@ connection.on('connected', () => {
 // If the connection throws an error
 connection.on('error', (err) => {
   console.log('Mongoose default connection error: ' + err)	
-}) 
+})
+
+//serve static react files
+app.use(express.static(__dirname + '/client/build/'))
+
+app.get('/', (req,res) => {
+  res.sendFile(__dirname + '/client/build/index.html')
+})
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
@@ -38,9 +43,6 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
-
-app.use('/', index)
-app.use('/users', users)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
