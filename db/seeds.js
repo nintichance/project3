@@ -29,7 +29,7 @@ User.remove({}).then(() => {
     const sylvia = new User({
         firstName: 'Sylvia',
         lastName: 'Markson',
-        img: 'https://i.imgur.com/QKCVUFz.jpg?3'
+        img: 'https://i.imgur.com/KIiCMv3.jpg'
     })
     const micah = new Kid({
         firstName: 'Micah',
@@ -67,7 +67,7 @@ User.remove({}).then(() => {
         return User.create({
             firstName: 'Arlind',
             lastName: 'Amarov',
-            img: 'https://i.imgur.com/QKCVUFz.jpg?3'
+            img: 'https://i.imgur.com/KIiCMv3.jpg'
         })
     })
     .then((arlind) => {
@@ -106,7 +106,7 @@ User.remove({}).then(() => {
         return User.create({
             firstName: 'Nina',
             lastName: 'Madravan',
-            img: 'https://i.imgur.com/QKCVUFz.jpg?3'
+            img: 'https://i.imgur.com/KIiCMv3.jpg'
         })
     })
     .then((nina) => {

@@ -1,11 +1,13 @@
 import React from 'react'
 import UserList from './UserList'
 
-const UserPage = () => {
+const UserPage = (props) => {
+    console.log(props.users)
     return(
         <div>
             Hello from UserPage
-            <UserList />
+            <UserList users={props.users}  key={props.index}/>
+            
         </div>
     )
 }

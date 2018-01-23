@@ -1,9 +1,11 @@
 import React from 'react'
 
-const User = () => {
+const User = (props) => {
+
     return (
         <div>
-            Hello from User
+            <h1>Hello from {props.firstName}</h1>
+            <img src={props.img} alt = "Placeholder User"/>
         </div>
     )
     

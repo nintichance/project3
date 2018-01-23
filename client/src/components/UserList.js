@@ -1,10 +1,21 @@
 import React from 'react'
 import User from './User'
-const UserList = () =>{
+const UserList = (props) =>{
+
+    
+ const userList = props.users.map((user, index)=>{
+        return (  
+            <User
+            firstName={user.firstName}
+            lastName={user.lastName}
+            img={user.img}
+            key={index}/>
+        )
+    })
     return (
         <div>
             Hello From User List
-            <User />
+            {userList}
         </div>
     )
 }
