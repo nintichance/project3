@@ -1,12 +1,9 @@
 // import React from 'react'
-// import 
-
-
-// class UserPage extends Component {
+// import UserList from './UserList'
 
 
 
 
-// }
 
-// export default UserPage
+
+//  export default UserPage
