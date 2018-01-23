@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import './App.css'
+
+// import UserPage from './components/UserPage'
 import axios from 'axios'
 
 class App extends Component {
@@ -13,8 +15,8 @@ class App extends Component {
   
   async getUserData(){try {
     const res = await axios.get('/api/users')
-    const users = res.data
-    console.log(users)
+     const users = res.data
+     console.log(users)
     this.setState({users: users})
   }
   catch(err) {
@@ -23,8 +25,8 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        {this.users}
+      <div>
+        {/* <UserPage /> */}
       </div>
     )
   }
