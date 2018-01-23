@@ -11,4 +11,4 @@ const UserList = () =>{
 
 
 
-export default UserPage
+export default UserList

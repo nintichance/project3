@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './App.css'
 
-// import UserPage from './components/UserPage'
+import UserPage from './components/UserPage'
 import axios from 'axios'
 
 class App extends Component {
@@ -26,7 +26,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        {/* <UserPage /> */}
+        <UserPage />
       </div>
     )
   }
