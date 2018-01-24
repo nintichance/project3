@@ -38,6 +38,7 @@ class UserForm extends Component {
         return (
             <div>
                 Hello from UserForm
+                {this.props.redirectToUsers ? <Redirect to="/users">Users</Redirect> :
                 <form onSubmit={this._addNewUser}>
                     <div>
                         <span>New User </span>
@@ -72,9 +73,9 @@ class UserForm extends Component {
                             value="Add New User" />
                     </div>
                     <div>
-                        <button><Link to="/users">Back</Link></button>
+                    <button><Link to="/users">Back</Link></button>
                     </div>
-                </form>
+                </form>}
             </div>
         )
 

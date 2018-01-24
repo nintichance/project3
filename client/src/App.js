@@ -34,7 +34,7 @@ class App extends Component {
       newUser = res.data
       const updatedUsers = [...this.state.users]
       updatedUsers.unshift(newUser)
-      this.setState({ redirectedToUsers: true, users: updatedUsers })
+      this.setState({ redirectToUsers: true, users: updatedUsers })
       //this.setState returns a promise; it shoud be the last thing because it breaks 
     } catch (err) {
       console.log(err)
@@ -57,7 +57,7 @@ class App extends Component {
   render() {
     const HomePage = () => (<Home />)
     const UserComponent = () => (<UserPage users={this.state.users} />)
-    const UserFormComponent = () => (<UserForm addNewUser={this.addNewUser} />)
+    const UserFormComponent = () => (<UserForm addNewUser={this.addNewUser} redirectToUsers={this.state.redirectToUsers}/>)
     return (
       <Router>
         <Switch>
