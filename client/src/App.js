@@ -27,16 +27,13 @@ class App extends Component {
 
   render() {
     const HomePage = () => (<Home />)
-    const UserPage = () => (<UserPage users={this.state.users} />)
+    const UserComponent = () => (<UserPage users={this.state.users} />)
     return (
       <Router>
         <div>
-          <div>
-            <Link to='/login'>Login</Link>
-          </div>
           <Switch>
-            <Route exact path="/" component={HomePage} />
-            <Route exact path="/users" component={UserPage} />
+            <Route exact path="/home" component={HomePage} />
+            <Route exact path="/" component={UserComponent} />
           </Switch>
         </div>
       </Router>
