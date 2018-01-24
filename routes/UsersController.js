@@ -13,7 +13,8 @@ router.get('/', async(req, res)=>{
 })
 
 router.post('/', async(req, res)=>{
-    const newUser = new User(req.body.user)
+    const newUser = new User(req.body)
+    console.log(req.body)
     const user = await newUser.save() 
     try{
         res.json(user)

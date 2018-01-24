@@ -9,8 +9,7 @@ import axios from 'axios'
 class App extends Component {
   state = {
     users: [],
-    redirectToUsers: false,
-    createdUser: {}
+    redirectToUsers: false
   }
   componentWillMount() {
     //Call to Express API for user data from MongoDB
@@ -28,36 +27,44 @@ class App extends Component {
     }
   }
 
-  async createUser(){
-    try{
-      const res = await axios.post('/api/users', {
-        user: this.state.user
-      })
-      console.log('NEWUSER:', this.state.user)
-      this.setState({redirectToUsers: true, createdUser: res.data})
-    }catch(err){
+  async createUser(newUser) {
+
+    try {
+      const res = await axios.post('/api/users', newUser)
+      newUser = res.data
+      const updatedUsers = [...this.state.users]
+      updatedUsers.unshift(newUser)
+      this.setState({ redirectedToUsers: true, users: updatedUsers })
+      //this.setState returns a promise; it shoud be the last thing because it breaks 
+    } catch (err) {
       console.log(err)
     }
   }
 
-  addNewUser = (newUser) => {
-    const users = [...this.state.users]
-    users.push(newUser)
-    this.setState({users})
-    this.createUser()
+  addNewUser = async (newUser) => {
+    try {
+      await this.createUser(newUser)
+      const users = [...this.state.users]
+      users.push(newUser)
+      this.setState({ users })
+    }
+    catch (err) {
+      console.log(err)
+    }
+
   }
 
   render() {
     const HomePage = () => (<Home />)
     const UserComponent = () => (<UserPage users={this.state.users} />)
-    const UserFormComponent = ()=> (<UserForm addNewUser = {this.addNewUser} />)
+    const UserFormComponent = () => (<UserForm addNewUser={this.addNewUser} />)
     return (
       <Router>
-          <Switch>
-            <Route exact path="/" component={HomePage} />
-            <Route exact path="/users" component={UserComponent} />
-            <Route exact path="/new-user" component={UserFormComponent} />
-          </Switch>
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route exact path="/users" component={UserComponent} />
+          <Route exact path="/new-user" component={UserFormComponent} />
+        </Switch>
       </Router>
     )
   }
