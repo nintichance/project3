@@ -6,7 +6,8 @@ const UserPage = (props) => {
     return(
         <div>
             Hello from UserPage
-            <UserList users={props.users}  key={props.index}/>
+           
+            <UserList users={props.users} />
             
         </div>
     )
