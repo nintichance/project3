@@ -8,7 +8,9 @@ import axios from 'axios'
 
 class App extends Component {
   state = {
-    users: []
+    users: [],
+    redirectToUsers: false,
+    createdUser: {}
   }
   componentWillMount() {
     //Call to Express API for user data from MongoDB
@@ -28,10 +30,11 @@ class App extends Component {
 
   async createUser(){
     try{
-      axios.post('/api/users', {
+      const res = await axios.post('/api/users', {
         user: this.state.user
-        // this.setState({redirectToHome: true, createdUser: res.data})
       })
+      console.log('NEWUSER:', this.state.user)
+      this.setState({redirectToUsers: true, createdUser: res.data})
     }catch(err){
       console.log(err)
     }
@@ -41,6 +44,7 @@ class App extends Component {
     const users = [...this.state.users]
     users.push(newUser)
     this.setState({users})
+    this.createUser()
   }
 
   render() {
