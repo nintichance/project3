@@ -1,14 +1,17 @@
 import React from 'react'
 import UserList from './UserList'
-import UserForm from './UserForm'
+import { Link } from 'react-router-dom'
 const UserPage = (props) => {
-    console.log(props.users)
-    return(
+    // console.log(props.users)
+    return (
         <div>
             Hello from UserPage
-           
-            <UserList users={props.users} />
-            <UserForm />
+            <div>
+                <Link to="/new-user">New User </Link>
+            </div>
+            <div>
+                <UserList users={props.users} />
+            </div>
         </div>
     )
 }
@@ -16,4 +19,4 @@ const UserPage = (props) => {
 
 
 
- export default UserPage
+export default UserPage

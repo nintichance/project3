@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import './App.css'
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import UserPage from './components/UserPage'
 import Home from './components/Home'
+import UserForm from './components/UserForm'
 import axios from 'axios'
 
 class App extends Component {
@@ -45,14 +46,14 @@ class App extends Component {
   render() {
     const HomePage = () => (<Home />)
     const UserComponent = () => (<UserPage users={this.state.users} />)
+    const UserFormComponent = ()=> (<UserForm addNewUser = {this.addNewUser} />)
     return (
       <Router>
-        <div>
           <Switch>
-            <Route exact path="/home" component={HomePage} />
-            <Route exact path="/" component={UserComponent} />
+            <Route exact path="/" component={HomePage} />
+            <Route exact path="/users" component={UserComponent} />
+            <Route exact path="/new-user" component={UserFormComponent} />
           </Switch>
-        </div>
       </Router>
     )
   }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import { Redirect } from 'react-router-dom'
 class UserForm extends Component {
     constructor(props) {
         super(props)
@@ -11,6 +11,7 @@ class UserForm extends Component {
             }
         }
         this.state = { ...this.defaultState }
+        console.log(`FORM STATE:`, this.state.newUser)
     }
     handleInputChange = (event) => {
         const attribute = event.target.name
@@ -30,8 +31,9 @@ class UserForm extends Component {
     _addNewUser = (event) => {
         event.preventDefault()
         this.props.addNewUser(this.state.newUser)
-        // this._resetForm()
+        this._resetForm()
     }
+    redirectToUser
     render() {
         return (
             <div>
