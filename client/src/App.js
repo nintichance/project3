@@ -21,7 +21,18 @@ class App extends Component {
       this.setState({ users: users })
     }
     catch (err) {
-      console.error(err)
+      console.log(err)
+    }
+  }
+
+  async createUser(){
+    try{
+      axios.post('/api/users', {
+        user: this.state.user
+        // this.setState({redirectToHome: true, createdUser: res.data})
+      })
+    }catch(err){
+      console.log(err)
     }
   }
 
