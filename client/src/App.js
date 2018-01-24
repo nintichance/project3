@@ -25,6 +25,12 @@ class App extends Component {
     }
   }
 
+  addNewUser = (newUser) => {
+    const users = [...this.state.users]
+    users.push(newUser)
+    this.setState({users})
+  }
+
   render() {
     const HomePage = () => (<Home />)
     const UserComponent = () => (<UserPage users={this.state.users} />)

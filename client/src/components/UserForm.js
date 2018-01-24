@@ -12,7 +12,18 @@ class UserForm extends Component {
         }
         this.state = { ...this.defaultState }
     }
+    handleInputChange = (event) => {
+        const attribute = event.target.name
+        let value = event.target.value
 
+        if (attribute === 'firstName'){
+            value = String(value)
+        }
+        const newUser = {...this.state.newUser}
+        newUser[attribute] = value
+        this.setState({newUser})
+    }
+    
     render() {
         return (
             <div>
