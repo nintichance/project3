@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 class UserForm extends Component {
     constructor(props) {
         super(props)
@@ -33,7 +33,7 @@ class UserForm extends Component {
         this.props.addNewUser(this.state.newUser)
         this._resetForm()
     }
-    redirectToUser
+    //REDIRECT TO USERS PAGE
     render() {
         return (
             <div>
@@ -71,7 +71,9 @@ class UserForm extends Component {
                             type="submit"
                             value="Add New User" />
                     </div>
-
+                    <div>
+                        <button><Link to="/users">Back</Link></button>
+                    </div>
                 </form>
             </div>
         )
