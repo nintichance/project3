@@ -23,7 +23,11 @@ class UserForm extends Component {
         newUser[attribute] = value
         this.setState({newUser})
     }
-    
+    _addNewUser = (event) => {
+        event.preventDefault()
+        this.props.addNewUser(this.state.newUser)
+        // this._resetForm()
+    }
     render() {
         return (
             <div>
