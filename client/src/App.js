@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import UserPage from './components/UserPage'
 import Home from './components/Home'
 import UserForm from './components/UserForm'
+import UserShow from './components/UserShow'
 import axios from 'axios'
 
 class App extends Component {
@@ -58,12 +59,14 @@ class App extends Component {
     const HomePage = () => (<Home />)
     const UserComponent = () => (<UserPage users={this.state.users} />)
     const UserFormComponent = () => (<UserForm addNewUser={this.addNewUser} redirectToUsers={this.state.redirectToUsers}/>)
+    const UserShowPage = () => (<UserShow users={this.state.users}/>)
     return (
       <Router>
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/users" component={UserComponent} />
           <Route exact path="/new-user" component={UserFormComponent} />
+          <Route exact path='/users/:userId' component={UserShowPage} />
         </Switch>
       </Router>
     )

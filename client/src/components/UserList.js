@@ -4,12 +4,13 @@ const UserList = (props) =>{
 
     
  const userList = props.users.map((user, index)=>{
+     console.log(user.firstName, user._id)
         return (  
             <User
             firstName={user.firstName}
             lastName={user.lastName}
             img={user.img}
-            key={index}/>
+            key={index}/> 
         )
     })
     return (
