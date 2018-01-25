@@ -2,11 +2,15 @@ import React, { Component } from 'react'
 import axios from 'axios'
 
 class UserShow extends Component {
-    
-    state = {
-        user: {}
+
+    constructor(props) {
+        super(props)
+        this.defaultState = {
+            user: {}
+        }
+        this.state = { ...this.defaultState }
     }
-    
+
     componentWillMount(){
         this.getUserInfo()
     }
@@ -25,6 +29,22 @@ class UserShow extends Component {
         
     }
 
+    // createIdea = () => {
+    //     axios.post(`/api/users/${this.state.user.id}/ideas`).then(res => {
+    //       const newIdeas = [...this.state.ideas]
+    //       newIdeas.unshift(res.data) //This will add the new Idea to the beginning of the array
+    //       this.setState({ideas: newIdeas})
+    //     })
+    //   }
+
+    // async deleteUser(){
+    //     try{
+    //         const userId = this.props.match.params.userId
+    //         await axios.delete(`/api/users/${userId}/delete`)
+    //         const updatedInfo = {...user}
+    //         this.setState({user: updatedInfo})
+    //     }
+    // }
 
     
     render(){ 
