@@ -26,7 +26,7 @@ router.post('/', async(req, res)=>{
     }
 })
 
-//GET a single user
+//GET (read) a single user
 router.get('/:userId', async(req, res)=>{
     const userId = req.params.userId
     try{
@@ -42,17 +42,60 @@ router.get('/:userId', async(req, res)=>{
     }
 })
 
-//DELETE a user
+//DELETE (delete) a user
 router.get('/:userId/delete', async(req, res)=>{
     const userId = req.params.userId
     try{
         await User.findByIdAndRemove(userId)
-        res.redirect('/users')
+        res.redirect('/api/users')
     }
     catch(err){
         console.log(err)
     }
 })
+
+router.patch('/:userId', (req, res) => {
+    User.findById(req.params.userId).then((user) => {
+      const update = req.body.user
+      if (update.firstName) {
+        user.firstName = update.firstName
+      }
+      if (update.lastName) {
+        user.lastName = update.lastName
+      }
+      if (update.img) {
+        user.img = update.img
+      }
+      user.save().then((user) => {
+        user = user.reverse()
+        res.json(user)
+      })
+    })
+  })
+
+  
+//   router.patch('/:userId', (req, res)=>{
+//       try{
+//           const user = await User.findById(req.params.userId)
+//           const update = req.body.user
+//           const oneUser = user.users.id(req.params.id)
+//           if (update.firstName){
+//             user.firstName = update.firstName
+//           }
+//           if (update.lastName){
+//               user.lastName = update.lastName
+//           }
+//           if (update.img){
+//               user.img = update.img
+//           }
+//           const newUser = await user.save()
+//           newUser = newUser.reverse()
+//           res.json(newUser)
+//         }
+//       catch(err){
+//           console.log(err)
+//       }
+//   })
 
 
 module.exports = router
