@@ -25,7 +25,7 @@ class UserShow extends Component {
         
     }
 
-    
+
     
     render(){ 
         console.log(this.state.user.firstName)
@@ -35,6 +35,7 @@ class UserShow extends Component {
                     Hello from UserShow!
                     <div><img src={this.state.user.img} alt="User"/></div>
                     <div>Name: {this.state.user.firstName} {this.state.user.name}</div>
+                    <div><button>Delete User</button></div>
                 </div>
             </div>
         )

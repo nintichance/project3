@@ -42,5 +42,17 @@ router.get('/:userId', async(req, res)=>{
     }
 })
 
+//DELETE a user
+router.get('/:userId/delete', async(req, res)=>{
+    const userId = req.params.userId
+    try{
+        await User.findByIdAndRemove(userId)
+        res.redirect('/users')
+    }
+    catch(err){
+        console.log(err)
+    }
+})
+
 
 module.exports = router
