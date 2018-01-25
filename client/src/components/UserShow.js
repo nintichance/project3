@@ -19,6 +19,7 @@ class UserShow extends Component {
     async getUserInfo() {
         try{
         const userId = this.props.match.params.userId
+        console.log('ID', userId)
         const res = await axios.get(`/api/users/${userId}`)
         const user = res.data
         console.log('USERINFO', user)
@@ -41,6 +42,19 @@ class UserShow extends Component {
     //         console.log(err)
     //     }
     // }
+    
+    //1:11AM I was trying to get both my delete and my edit routes working!!!
+    async updateUser(user, e) {
+        try{
+            const userId = this.props.match.params.userId
+            console.log('PIOEJ', userId)
+            await axios.patch(`/api/users/${userId}/edit`, {user})
+            this.setState({user})
+        }
+        catch(err){
+           console.log(err)
+        }
+    }
 
     
     render(){ 
@@ -51,7 +65,7 @@ class UserShow extends Component {
                     <div><img src={this.state.user.img} alt="User"/></div>
                     <div>Name: {this.state.user.firstName} {this.state.user.name}</div>
                     <div><button onClick ={this.deleteUser}>Delete User</button></div>
-                    <div><button>Edit User</button></div>
+                    <div><button onClick={this.updateUser}>Edit User</button></div>
                     <Link to="/users"><button>Go Back</button></Link>
                 </div>
             </div>
