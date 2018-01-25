@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import axios from 'axios'
 
 import styled from 'styled-components'
@@ -7,10 +7,12 @@ import { UserShowContainer } from './styled-components/Containers'
 
 class UserShow extends Component {
 
+
     constructor() {
         super()
         this.defaultState = {
-            user: {}
+            user: {},
+            redirect: false
         }
         this.state = { ...this.defaultState }
     }
@@ -26,7 +28,7 @@ class UserShow extends Component {
         const res = await axios.get(`/api/users/${userId}`)
         const user = res.data
         console.log('USERINFO', user)
-        console.log('BOOP', this.defaultState)
+        
         this.setState(user)
         }
         catch(err){
@@ -35,11 +37,18 @@ class UserShow extends Component {
         
     }
 
+    redirectToUser = ()=> {
+        this.setState({redirect:true})
+    }
+
     async deleteUser(userId){
         try{
             console.log('DELETE', userId)
-            await axios.delete(`/api/users/${userId}/delete`)
-            this.setState({user: this.defaultState})
+            await axios.get('/api/users/' +userId+ '/delete')
+            this.redirectToUser()
+       
+
+
         }
         catch(err){
             console.log(err)
@@ -65,7 +74,8 @@ class UserShow extends Component {
 
         return (
             <UserShowContainer>
-                <div>
+                {this.state.redirect ? <Redirect to="/users">Users</Redirect> :
+                    <div>
                     Hello from UserShow!
                     <div><img src={this.state.user.img} alt="User"/></div>
                     <div>Name: {this.state.user.firstName} {this.state.user.name}</div>
@@ -73,8 +83,10 @@ class UserShow extends Component {
                     <div><button onClick={() => this.updateUser(this.props.match.params.userId)}>Edit User</button></div>
                     <Link to="/users"><button>Go Back</button></Link>
                 </div>
+                }
             </UserShowContainer>
         )
+    
 }
    
 }

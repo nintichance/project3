@@ -43,7 +43,7 @@ router.get('/:userId', async(req, res)=>{
 })
 
 //DELETE (delete) a user
-router.delete('/:userId/delete', async(req, res)=>{
+router.get('/:userId/delete', async(req, res)=>{
     console.log("DELETING")
     const userId = req.params.userId
     try{

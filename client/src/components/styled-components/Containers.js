@@ -19,7 +19,7 @@ export const UserContainer = styled.div`
 `
 export const UserListContainer = Container.extend`
    border: 1px solid black;
-   grid-template-columns: repeat(autofill, 100px)
+   grid-template-columns: repeat(4, 1fr)
 `
 export const UserFormContainer = Container.extend`
     border: 1px solid blue;
