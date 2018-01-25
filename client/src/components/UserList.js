@@ -1,5 +1,7 @@
 import React from 'react'
 import User from './User'
+
+
 const UserList = (props) =>{
 
     
@@ -10,7 +12,8 @@ const UserList = (props) =>{
             firstName={user.firstName}
             lastName={user.lastName}
             img={user.img}
-            key={index}/> 
+            key={index}
+            userId={user._id}/> 
         )
     })
     return (

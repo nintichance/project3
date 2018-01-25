@@ -58,15 +58,15 @@ class App extends Component {
   render() {
     const HomePage = () => (<Home />)
     const UserComponent = () => (<UserPage users={this.state.users} />)
-    const UserFormComponent = () => (<UserForm addNewUser={this.addNewUser} redirectToUsers={this.state.redirectToUsers}/>)
-    const UserShowPage = () => (<UserShow users={this.state.users}/>)
+    const UserFormComponent = (props) => (<UserForm addNewUser={this.addNewUser} redirectToUsers={this.state.redirectToUsers} {...props}/>)
+    
     return (
       <Router>
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/users" component={UserComponent} />
           <Route exact path="/new-user" component={UserFormComponent} />
-          <Route exact path='/users/:userId' component={UserShowPage} />
+          <Route exact path='/users/:userId' component={UserShow} />
         </Switch>
       </Router>
     )

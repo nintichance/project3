@@ -2,6 +2,8 @@ const express = require('express')
 const User = require('../db/models/User')
 const router = express.Router()
 
+
+//GET (read) all users
 router.get('/', async(req, res)=>{
     const users = await User.find({}) 
     try{
@@ -12,6 +14,7 @@ router.get('/', async(req, res)=>{
     }
 })
 
+//POST (create) a new user
 router.post('/', async(req, res)=>{
     const newUser = new User(req.body)
     const user = await newUser.save() 
@@ -23,6 +26,21 @@ router.post('/', async(req, res)=>{
     }
 })
 
+//GET a single user
+router.get('/:userId', async(req, res)=>{
+    const userId = req.params.userId
+    try{
+        const user = await User.findById(userId)
+        console.log(user)
+        res.json({
+            user
+        })
+    }
+    catch(err){
+        console.log(err)
+        res.send(err)
+    }
+})
 
 
 module.exports = router
