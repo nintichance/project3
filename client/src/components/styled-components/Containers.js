@@ -11,13 +11,15 @@ export const Container = styled.div`
 export const UserShowContainer = Container.extend`
     height: 100vh;
 `
-export const UserContainer = Container.extend`
+export const UserContainer = styled.div`
     border: 1px solid orange;
-    width: 100vw;
+    display: grid;
+    justify-items: center;
+    background-color: #1b1c1e;
 `
 export const UserListContainer = Container.extend`
    border: 1px solid black;
-   grid-template-columns: 1fr, 1fr;
+   grid-template-columns: repeat(3, 1fr)
 `
 export const UserFormContainer = Container.extend`
     border: 1px solid blue;
