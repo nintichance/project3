@@ -1,5 +1,8 @@
 import React from 'react'
 import User from './User'
+import styled from 'styled-components'
+
+import { UserListContainer } from './styled-components/Containers'
 
 
 const UserList = (props) =>{
@@ -17,10 +20,10 @@ const UserList = (props) =>{
         )
     })
     return (
-        <div>
+        <UserListContainer>
             Hello From User List
             {userList}
-        </div>
+        </UserListContainer>
     )
 }
 

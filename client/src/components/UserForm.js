@@ -1,5 +1,10 @@
 import React, { Component } from 'react'
 import { Redirect, Link } from 'react-router-dom'
+import styled from 'styled-components'
+
+import { UserFormContainer } from './styled-components/Containers'
+
+
 class UserForm extends Component {
     constructor(props) {
         super(props)
@@ -8,7 +13,8 @@ class UserForm extends Component {
                 firstName: 'Eric',
                 lastName: 'Lu',
                 img: 'https://i.imgur.com/KIiCMv3.jpg'
-            }
+            },
+            redirect: false
         }
         this.state = { ...this.defaultState }
         console.log(`FORM STATE:`, this.state.newUser)
@@ -26,7 +32,7 @@ class UserForm extends Component {
     }
     _resetForm = () => {
         const newUser = {...this.defaultState.newUser}
-        this.setState({newUser})
+        this.setState({newUser, redirect: true})
     }
     _addNewUser = (event) => {
         event.preventDefault()
@@ -36,9 +42,9 @@ class UserForm extends Component {
     //REDIRECT TO USERS PAGE
     render() {
         return (
-            <div>
+            <UserFormContainer>
                 Hello from UserForm
-                {this.props.redirectToUsers ? <Redirect to="/users">Users</Redirect> :
+                {this.state.redirect ? <Redirect to="/users">Users</Redirect> :
                 <form onSubmit={this._addNewUser}>
                     <div>
                         <span>New User </span>
@@ -76,7 +82,7 @@ class UserForm extends Component {
                     <button><Link to="/users">Back</Link></button>
                     </div>
                 </form>}
-            </div>
+            </UserFormContainer>
         )
 
     }

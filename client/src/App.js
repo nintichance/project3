@@ -7,11 +7,12 @@ import UserForm from './components/UserForm'
 import UserShow from './components/UserShow'
 import axios from 'axios'
 
+
+
 class App extends Component {
   state = {
-    users: [],
-    redirectToUsers: false
-  }
+    users: []
+    }
   componentWillMount() {
     //Call to Express API for user data from MongoDB
     this.getUserData()
@@ -34,8 +35,8 @@ class App extends Component {
       const res = await axios.post('/api/users', newUser)
       newUser = res.data
       const updatedUsers = [...this.state.users]
-      updatedUsers.unshift(newUser)
-      this.setState({ redirectToUsers: true, users: updatedUsers })
+      // updatedUsers.unshift(newUser)
+      this.setState({ users: updatedUsers })
       //this.setState returns a promise; it shoud be the last thing because it breaks 
     } catch (err) {
       console.log(err)
@@ -58,7 +59,7 @@ class App extends Component {
   render() {
     const HomePage = () => (<Home />)
     const UserComponent = () => (<UserPage users={this.state.users} />)
-    const UserFormComponent = (props) => (<UserForm addNewUser={this.addNewUser} redirectToUsers={this.state.redirectToUsers} {...props}/>)
+    const UserFormComponent = (props) => (<UserForm addNewUser={this.addNewUser} {...props}/>)
     
     return (
       <Router>
