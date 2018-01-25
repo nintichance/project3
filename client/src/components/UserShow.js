@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 
 class UserShow extends Component {
@@ -42,7 +43,10 @@ class UserShow extends Component {
     //         const userId = this.props.match.params.userId
     //         await axios.delete(`/api/users/${userId}/delete`)
     //         const updatedInfo = {...user}
-    //         this.setState({user: updatedInfo})
+    //         this.setState({user: this.defaultState})
+    //     }
+    //     catch(err){
+    //         console.log(err)
     //     }
     // }
 
@@ -56,6 +60,7 @@ class UserShow extends Component {
                     <div><img src={this.state.user.img} alt="User"/></div>
                     <div>Name: {this.state.user.firstName} {this.state.user.name}</div>
                     <div><button>Delete User</button></div>
+                    <Link to="/users"><button>Go Back</button></Link>
                 </div>
             </div>
         )
