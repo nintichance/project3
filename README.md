@@ -8,3 +8,6 @@ This app allows parents, gaurdians, or baby sitters to keep track of their kid's
 [Trello User Stories](https://trello.com/b/5bwZQ7ym/yello)
 [Figma WireFrames](https://www.figma.com/file/gpu5yAt0JhPSlwsMQpshzz/yello!-app-Wireframes)
 
+https://codepen.io/alexdevero/pen/pWQLmR
+
+https://courses.wesbos.com/account/access/5a651c1ba6b56c55273b3bbf/view/249560994

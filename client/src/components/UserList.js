@@ -21,7 +21,6 @@ const UserList = (props) =>{
     })
     return (
         <UserListContainer>
-            Hello From User List
             {userList}
         </UserListContainer>
     )

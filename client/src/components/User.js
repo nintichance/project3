@@ -3,15 +3,17 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 import { UserContainer } from './styled-components/Containers'
+import { Image } from './styled-components/Images'
 
 
 const User = (props) => {
 
     return (
         <UserContainer>
-            <h1>Hello from {props.firstName}</h1>
-            <img src={props.img} alt = "Placeholder User"/>
-             <Link to={`users/${props.userId}`}><button>User</button></Link>
+            <div>
+            {/* <h1>Hello from {props.firstName}</h1> */}
+             <Link to={`users/${props.userId}`}> <Image src={props.img} alt = "Placeholder User"/></Link>
+             </div>
         </UserContainer>
     )
     
