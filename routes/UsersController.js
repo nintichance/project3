@@ -55,48 +55,18 @@ router.get('/:userId/delete', async(req, res)=>{
     }
 })
 
-router.patch('/:userId', (req, res) => {
-    User.findById(req.params.userId).then((user) => {
-      const update = req.body.user
-      if (update.firstName) {
-        user.firstName = update.firstName
-      }
-      if (update.lastName) {
-        user.lastName = update.lastName
-      }
-      if (update.img) {
-        user.img = update.img
-      }
-      user.save().then((user) => {
-        user = user.reverse()
+//Update a user
+
+router.patch('/:userId', async (req, res)=>{
+    try{
+        const updatedUser = req.body
+        const userId = req.params.userId
+        await User.findByIdAndUpdate(userId, updatedUser)
         res.json(user)
-      })
-    })
-  })
-
-  
-//   router.patch('/:userId', (req, res)=>{
-//       try{
-//           const user = await User.findById(req.params.userId)
-//           const update = req.body.user
-//           const oneUser = user.users.id(req.params.id)
-//           if (update.firstName){
-//             user.firstName = update.firstName
-//           }
-//           if (update.lastName){
-//               user.lastName = update.lastName
-//           }
-//           if (update.img){
-//               user.img = update.img
-//           }
-//           const newUser = await user.save()
-//           newUser = newUser.reverse()
-//           res.json(newUser)
-//         }
-//       catch(err){
-//           console.log(err)
-//       }
-//   })
-
+    }
+    catch(err){
+        console.log(err)
+    }    
+})
 
 module.exports = router

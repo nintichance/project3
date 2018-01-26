@@ -49,6 +49,9 @@ app.use(express.static(path.join(__dirname, 'public')))
 const UsersController = require('./routes/UsersController')
 app.use('/api/users', UsersController)
 
+const KidsController = require('./routes/KidsController')
+app.use('/api/users/:userId/kids', KidsController)
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   const err = new Error('Not Found')
