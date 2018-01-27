@@ -34,8 +34,10 @@ export const UserShowContainer = Container.extend`
     height: 100vh;
 `
 export const UserContainer = styled.div`
-    justify-items: center;
-   
+    margin-top: 100px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 `
 export const  HomeContainer = Container.extend`
   justify-items: center;

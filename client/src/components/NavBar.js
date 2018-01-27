@@ -7,9 +7,9 @@ const NavBar = (props) =>{
 return(
     <Nav>
         Hello from NavBar
-         <Link to="/">Home</Link>
-          <Link to="/users">Users</Link>
-          <Link to="/new-user">New User</Link>
+         <Link to="/"><img src="https://i.imgur.com/B5lSqBm.png?1" alt="Home"/></Link>
+          <Link to="/users"><img src="https://i.imgur.com/bgEh0IF.png?1" alt="Users"/></Link>
+          <Link to="/new-user"><img src="https://i.imgur.com/ncUJdHD.png?1" alt="Add a User"/></Link>
           {/* <Route to="/users/:userId" UserTest>Here</Link> */}
           {/* <Link to='/users/:userId' >Here</Link>
           <Link to='/users/:userId/kids'>Here</Link> */}
