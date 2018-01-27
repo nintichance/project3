@@ -1,10 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { Nav } from './styled-components/Nav'
 
 const NavBar = (props) =>{
 
 return(
-    <div>
+    <Nav>
         Hello from NavBar
          <Link to="/">Home</Link>
           <Link to="/users">Users</Link>
@@ -17,7 +18,7 @@ return(
         About
         New Kid (Only display if on User Page and Kids Page)
         New Activity (Only display if on Kid Page and Activity Page) */}
-    </div>
+    </Nav>
 )
 
 }
