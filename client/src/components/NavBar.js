@@ -5,12 +5,13 @@ const NavBar = (props) =>{
 
 return(
     <div>
-         <Route exact path="/" component={HomePage} />
-          <Route exact path="/users" component={UserComponent} />
-          <Route exact path="/new-user" component={UserFormComponent} />
-          {/* <Route exact path="/users/:userId" component={UserTestComponent} /> */}
-          <Route exact path='/users/:userId' component={UserShow} />
-          <Route exact path='/users/:userId/kids' component={KidPage} />
+        Hello from NavBar
+         <Link to="/">Home</Link>
+          <Link to="/users">Users</Link>
+          <Link to="/new-user">New User</Link>
+          {/* <Route to="/users/:userId" UserTest>Here</Link> */}
+          {/* <Link to='/users/:userId' >Here</Link>
+          <Link to='/users/:userId/kids'>Here</Link> */}
         {/* Home
         New User
         About

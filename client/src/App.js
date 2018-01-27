@@ -6,6 +6,7 @@ import Home from './components/Home'
 import UserForm from './components/UserForm'
 import UserShow from './components/UserShow'
 import KidPage from './components/UserShow'
+import NavBar from './components/NavBar'
 import axios from 'axios'
 
 //import UserTest from './components/UserTest'
@@ -119,6 +120,7 @@ class App extends Component {
     return (
       <Router>
         <Switch>
+          <Route exact path="/nav" component={NavBar} />
           <Route exact path="/" component={HomePage} />
           <Route exact path="/users" component={UserComponent} />
           <Route exact path="/new-user" component={UserFormComponent} />
