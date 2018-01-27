@@ -90,7 +90,7 @@ class UserShow extends Component {
             const res = await axios.get(`/api/users/${userId}/kids/${kidId}`)
             const kid = res.data
             console.log('KIDINFO', kid)
-            
+
             this.setState(kid)
         }
         catch (err) {
@@ -99,21 +99,22 @@ class UserShow extends Component {
 
     }
     //Show Kids Component Only
-    showKids = () =>{
+    showKids = () => {
         this.setState({ showKids: true })
     }
 
 
     render() {
 
-        
+
         return (
             <UserShowContainer>
-                
-                {this.state.redirect ? <Redirect to="/users">Users</Redirect> :
+
+                {this.state.redirect ? <Redirect to="/users">Users</Redirect> : null}
+                {this.state.showKids ? <KidPage kids={this.state.kids} getOneKid={this.getOneKid} userId={this.props.match.params.userId} kid={this.state.kid} showKids={this.state.showKids} /> :
                     <div>
                         Hello from UserShow!
-                    <KidPage kids = {this.state.kids} getOneKid = {this.getOneKid} userId = {this.props.match.params.userId} kid = {this.state.kid} showKids = {this.state.showKids}/>
+
                     <div><img src={this.state.user.img} alt="User" /></div>
                         <div>Name: {this.state.user.firstName} {this.state.user.name}</div>
                         <div><button onClick={() => { this.deleteUser(this.props.match.params.userId) }}>Delete User</button></div>
