@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Redirect, Link } from 'react-router-dom'
 import NavBar from './NavBar'
 import { UserFormContainer } from './styled-components/Containers'
-import { FormWrapper, FormHeader, FormHeading, FormBody, FormField } from './styled-components/Form'
+import { FormWrapper, FormHeader, FormHeading, FormBody, FormField, FormInput, FormButton} from './styled-components/Form'
 
 class UserForm extends Component {
     constructor(props) {
@@ -54,7 +54,7 @@ class UserForm extends Component {
                         <FormHeader>
                             <FormHeading>New User</FormHeading>
                         </FormHeader>
-                        <input
+                        <FormInput
                             type="string"
                             name="firstName"
                             placeholder="First Name"
@@ -64,7 +64,7 @@ class UserForm extends Component {
 
                     <FormField>
                         
-                        <input
+                        <FormInput
                             type="string"
                             name="lastName"
                             placeholder="Last Name"
@@ -72,7 +72,7 @@ class UserForm extends Component {
                             onChange={this.handleInputChange} />
                     </FormField>
                     <FormField>
-                        <input
+                        <FormInput
                             type="string"
                             name="img"
                             placeholder="Image URL"
@@ -80,12 +80,12 @@ class UserForm extends Component {
                             onChange={this.handleInputChange} />
                     </FormField>
                     <FormField>
-                        <input
+                        <FormInput
                             type="submit"
                             value="Add New User" />
                     </FormField>
                     <FormField>
-                    <button><Link to="/users">Back</Link></button>
+                    <FormButton><Link to="/users">Back</Link></FormButton>
                     </FormField>
                 </form>
                 </FormBody>
