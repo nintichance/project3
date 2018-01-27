@@ -24,21 +24,18 @@ export const FormHeading = styled.p`
     font-weight: bold;
     text-align: center;
 `
+export const FormBody = styled.div`
+    padding-right: 32px;
+    padding-left: 32px;
+`
 
 export default {
-    FormWrapper, FormHeader, FormHeading
+    FormWrapper, FormHeader, FormHeading, FormBody
 }
 
 // const sc = styled.default
 // const { css } = styled
 // const cardContainer = document.querySelector('.card-container')
-
-
-
-// const CardBody = sc.div`
-//   padding-right: 32px;
-//   padding-left: 32px;
-// `
 
 // const CardFieldset = sc.fieldset`
 //   position: relative;
