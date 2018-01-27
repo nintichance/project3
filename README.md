@@ -9,5 +9,8 @@ This app allows parents, gaurdians, or baby sitters to keep track of their kid's
 [Figma WireFrames](https://www.figma.com/file/gpu5yAt0JhPSlwsMQpshzz/yello!-app-Wireframes)
 
 [Gradient Background](https://www.gradient-animator.com/)
+[Form](https://codepen.io/alexdevero/pen/pWQLmR)
+
 
 installed react-transition group
+installed react-media

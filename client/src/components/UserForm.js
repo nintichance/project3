@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Redirect, Link } from 'react-router-dom'
 import NavBar from './NavBar'
 import { UserFormContainer } from './styled-components/Containers'
-
+import { FormWrapper, FormHeader, FormHeading } from './styled-components/Form'
 
 class UserForm extends Component {
     constructor(props) {
@@ -47,9 +47,12 @@ class UserForm extends Component {
                 <NavBar />
                 Hello from UserForm
                 {this.state.redirect ? <Redirect to="/users">Users</Redirect> :
+                <FormWrapper>
                 <form onSubmit={this._addNewUser}>
                     <div>
-                        <div>New User </div>
+                        <FormHeader>
+                            <FormHeading>New User</FormHeading>
+                        </FormHeader>
                         <input
                             type="string"
                             name="firstName"
@@ -83,7 +86,8 @@ class UserForm extends Component {
                     <div>
                     <button><Link to="/users">Back</Link></button>
                     </div>
-                </form>}
+                </form>
+                </FormWrapper>}
             </UserFormContainer>
         )
 
