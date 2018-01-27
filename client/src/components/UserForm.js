@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Redirect, Link } from 'react-router-dom'
-import NavBar from './NavBar'
+
 import { UserFormContainer } from './styled-components/Containers'
-import { FormWrapper, FormHeader, FormHeading, FormBody, FormField, FormInput, FormButton} from './styled-components/Form'
+import { FormWrapper, FormHeader, FormHeading, FormBody, FormField, FormInput, FormButton, FormInputButton} from './styled-components/Form'
 
 class UserForm extends Component {
     constructor(props) {
@@ -44,12 +44,11 @@ class UserForm extends Component {
     render() {
         return (
             <UserFormContainer>
-                <NavBar />
+
                 Hello from UserForm
                 {this.state.redirect ? <Redirect to="/users">Users</Redirect> :
                 <FormWrapper>
-                      <FormBody>
-                <form onSubmit={this._addNewUser}>
+                      <FormBody onSubmit={this._addNewUser}>
                     <FormField>
                         <FormHeader>
                             <FormHeading>New User</FormHeading>
@@ -80,14 +79,13 @@ class UserForm extends Component {
                             onChange={this.handleInputChange} />
                     </FormField>
                     <FormField>
-                        <FormInput
+                        <FormInputButton
                             type="submit"
                             value="Add New User" />
                     </FormField>
                     <FormField>
                     <FormButton><Link to="/users">Back</Link></FormButton>
                     </FormField>
-                </form>
                 </FormBody>
                 </FormWrapper>}
             </UserFormContainer>
