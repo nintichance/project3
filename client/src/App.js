@@ -113,7 +113,6 @@ class App extends Component {
   render() {
 
     console.log("ADDNEWUSER", this.addNewUser)
-    const HomePage = () => (<Home />)
     const UserComponent = () => (<UserPage users={this.state.users} />)
     const UserFormComponent = (props) => (<UserForm addNewUser={this.addNewUser} {...props} />)
     //const UserTestComponent = () => (<UserTest getUserInfo = {this.getUserInfo} user = {this.state.user}/>)
@@ -121,7 +120,7 @@ class App extends Component {
       <Router>
         <Switch>
           <Route exact path="/nav" component={NavBar} />
-          <Route exact path="/" component={HomePage} />
+          <Route exact path="/" component={Home} />
           <Route exact path="/users" component={UserComponent} />
           <Route exact path="/new-user" component={UserFormComponent} />
           {/* <Route exact path="/users/:userId" component={UserTestComponent} /> */}

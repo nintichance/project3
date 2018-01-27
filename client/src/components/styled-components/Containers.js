@@ -16,6 +16,10 @@ export const UserContainer = styled.div`
     justify-items: center;
    
 `
+export const  HomeContainer = Container.extend`
+  display: grid;
+  justify-items: center;
+`
 export const UserListContainer = Container.extend`
   
    grid-template-columns: repeat(4, 1fr)
@@ -28,5 +32,5 @@ export const UserPageContainer = Container.extend`
     border: 1px solid red;
 `
 export default {
-    UserShowContainer, UserListContainer, UserFormContainer, UserContainer, UserPageContainer
+    UserShowContainer, UserListContainer, UserFormContainer, UserContainer, UserPageContainer, HomeContainer
 }
