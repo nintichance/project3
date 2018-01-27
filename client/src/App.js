@@ -14,11 +14,12 @@ class App extends Component {
   state = {
     users: [],
     user: {}
-    }
+  }
   componentWillMount() {
     //Call to Express API for user data from MongoDB
     this.getUserData()
   }
+  //GET, POST, PATCH, DELETE User Information
 
   async getUserData() {
     try {
@@ -57,17 +58,18 @@ class App extends Component {
     }
 
   }
-//TESTROUTE
-//   async getUserInfo(userId) {
-//     try{
-//     const res = await axios.get(`/api/users/${userId}`)
-//     const user = res.data
-//     this.setState({user})
-//     }
-//     catch(err){
-//         console.log(err)
-//     }
-// }
+
+  //TESTROUTE
+  //   async getUserInfo(userId) {
+  //     try{
+  //     const res = await axios.get(`/api/users/${userId}`)
+  //     const user = res.data
+  //     this.setState({user})
+  //     }
+  //     catch(err){
+  //         console.log(err)
+  //     }
+  // }
 
 
   // updateUser = (event) =>{
@@ -78,7 +80,7 @@ class App extends Component {
   //       const user = this.state.user
   //       //console.log('Upadated user infor', res.data)
   //       this.props.updateUsers(user, update)
-    
+
   //   }).catch((err)=>{
   //       console.log(err)
   //   })
@@ -98,16 +100,20 @@ class App extends Component {
   //     }
   //   }
 
-    // updateUsers = (user, updatedUsers) => {
-    //   const userToUpdate = this.state.users.indexOf(user)
-    //   const users = [...this.state.users]
-    //   users[userToUpdate] = updatedUsersthis.setState({users})
-    // }
+  // updateUsers = (user, updatedUsers) => {
+  //   const userToUpdate = this.state.users.indexOf(user)
+  //   const users = [...this.state.users]
+  //   users[userToUpdate] = updatedUsersthis.setState({users})
+  // }
+
+ 
 
   render() {
+
+    console.log("ADDNEWUSER", this.addNewUser)
     const HomePage = () => (<Home />)
     const UserComponent = () => (<UserPage users={this.state.users} />)
-    const UserFormComponent = (props) => (<UserForm addNewUser={this.addNewUser} {...props}/>)
+    const UserFormComponent = (props) => (<UserForm addNewUser={this.addNewUser} {...props} />)
     //const UserTestComponent = () => (<UserTest getUserInfo = {this.getUserInfo} user = {this.state.user}/>)
     return (
       <Router>
@@ -117,7 +123,7 @@ class App extends Component {
           <Route exact path="/new-user" component={UserFormComponent} />
           {/* <Route exact path="/users/:userId" component={UserTestComponent} /> */}
           <Route exact path='/users/:userId' component={UserShow} />
-      
+
         </Switch>
       </Router>
     )

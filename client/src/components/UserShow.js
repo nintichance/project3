@@ -4,6 +4,7 @@ import axios from 'axios'
 
 import styled from 'styled-components'
 import { UserShowContainer } from './styled-components/Containers'
+import KidPage from './KidPage'
 
 class UserShow extends Component {
 
@@ -12,83 +13,116 @@ class UserShow extends Component {
         super()
         this.defaultState = {
             user: {},
+            kids: [],
+            kid: {},
             redirect: false
         }
         this.state = { ...this.defaultState }
     }
 
-    componentWillMount(){
+    componentWillMount() {
         this.getUserInfo()
+        this.getKidData()
     }
 
     async getUserInfo() {
-        try{
-        const userId = this.props.match.params.userId
-        console.log('ID', userId)
-        const res = await axios.get(`/api/users/${userId}`)
-        const user = res.data
-        console.log('USERINFO', user)
-        
-        this.setState(user)
+        try {
+            const userId = this.props.match.params.userId
+            console.log('ID', userId)
+            const res = await axios.get(`/api/users/${userId}`)
+            const user = res.data
+            console.log('USERINFO', user)
+
+            this.setState(user)
         }
-        catch(err){
+        catch (err) {
             console.log(err)
         }
-        
+
     }
 
-    redirectToUser = ()=> {
-        this.setState({redirect:true})
+    redirectToUser = () => {
+        this.setState({ redirect: true })
     }
 
-    async deleteUser(userId){
-        try{
+    async deleteUser(userId) {
+        try {
             console.log('DELETE', userId)
-            await axios.get('/api/users/' +userId+ '/delete')
+            await axios.get('/api/users/' + userId + '/delete')
             this.redirectToUser()
-       
+
 
 
         }
-        catch(err){
+        catch (err) {
             console.log(err)
         }
     }
-    
+
     //1:11AM I was trying to get both my delete and my edit routes working!!! 
     async updateUser(userId) {
-        try{
+        try {
             console.log('EDIT', userId)
             // await axios.patch(`/api/users/${userId}/edit`, {user})
             // this.setState({user})
-           // event.preventDefault()
+            // event.preventDefault()
         }
-        catch(err){
-           console.log(err)
+        catch (err) {
+            console.log(err)
         }
     }
+    //GET, POST, PATCH, DELETE Kid's Information
 
-    
-    render(){ 
+    async getKidData() {
+        try {
+            const userId = this.props.match.params.userId
+            const res = await axios.get(`/api/users/${userId}/kids`)
+            const kids = res.data
+            this.setState({ kids })
+        }
+        catch (err) {
+            console.log(err)
+        }
+    }
+    async getOneKid(userId, kidId) {
+        console.log("CLICKED!")
+        try {
+            const res = await axios.get(`/api/users/${userId}/kids/${kidId}`)
+            const kid = res.data
+            console.log('KIDINFO', kid)
+            
+            this.setState(kid)
+        }
+        catch (err) {
+            console.log(err)
+        }
+
+    }
 
 
+
+    render() {
+
+        
         return (
             <UserShowContainer>
                 {this.state.redirect ? <Redirect to="/users">Users</Redirect> :
                     <div>
-                    Hello from UserShow!
-                    <div><img src={this.state.user.img} alt="User"/></div>
-                    <div>Name: {this.state.user.firstName} {this.state.user.name}</div>
-                    <div><button onClick ={() => {this.deleteUser(this.props.match.params.userId)}}>Delete User</button></div>
-                    <div><button onClick={() => this.updateUser(this.props.match.params.userId)}>Edit User</button></div>
-                    <Link to="/users"><button>Go Back</button></Link>
-                </div>
+                        Hello from UserShow!
+                    <KidPage kids = {this.state.kids} getOneKid = {this.getOneKid} userId = {this.props.match.params.userId} kid = {this.state.kid}/>
+                    <div><img src={this.state.user.img} alt="User" /></div>
+                        <div>Name: {this.state.user.firstName} {this.state.user.name}</div>
+                        <div><button onClick={() => { this.deleteUser(this.props.match.params.userId) }}>Delete User</button></div>
+                        <div><button onClick={() => this.updateUser(this.props.match.params.userId)}>Edit User</button></div>
+                        <Link to="/users"><button>Go Back</button></Link>
+                        <Link to="/new-kid"><button>New Kid</button></Link>
+                    </div>
                 }
             </UserShowContainer>
         )
-    
-}
-   
+
+    }
+
 }
 
 
