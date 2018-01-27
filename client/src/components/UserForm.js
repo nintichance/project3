@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Redirect, Link } from 'react-router-dom'
-
+import NavBar from './NavBar'
 import { UserFormContainer } from './styled-components/Containers'
 
 
@@ -44,11 +44,12 @@ class UserForm extends Component {
     render() {
         return (
             <UserFormContainer>
+                <NavBar />
                 Hello from UserForm
                 {this.state.redirect ? <Redirect to="/users">Users</Redirect> :
                 <form onSubmit={this._addNewUser}>
                     <div>
-                        <span>New User </span>
+                        <div>New User </div>
                         <input
                             type="string"
                             name="firstName"

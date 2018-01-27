@@ -47,6 +47,9 @@ export const UserListContainer = Container.extend`
    grid-template-columns: repeat(4, 1fr)
 `
 export const UserFormContainer = Container.extend`
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100vw;
     height: 100vh;
 `
