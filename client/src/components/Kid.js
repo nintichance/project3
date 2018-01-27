@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 import { UserContainer } from './styled-components/Containers'
 import { Image } from './styled-components/Images'
-
+import NavBar from './NavBar'
 
 
 const Kid = (props) => {
@@ -19,6 +19,7 @@ const Kid = (props) => {
     return (
         <UserContainer>
             <div>
+                <NavBar />
                 <Image src={props.img} alt="Placeholder User" />
                 <button onClick={() => { this.getOneKid }}>Click it</button>
 

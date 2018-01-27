@@ -4,6 +4,7 @@ import axios from 'axios'
 
 import { UserShowContainer } from './styled-components/Containers'
 import KidPage from './KidPage'
+import NavBar from './NavBar'
 
 class UserShow extends Component {
 
@@ -113,6 +114,7 @@ class UserShow extends Component {
                 {this.state.redirect ? <Redirect to="/users">Users</Redirect> : null}
                 {this.state.showKids ? <KidPage kids={this.state.kids} getOneKid={this.getOneKid} userId={this.props.match.params.userId} kid={this.state.kid} showKids={this.state.showKids} /> :
                     <div>
+                        <NavBar />
                         Hello from UserShow!
 
                     <div><img src={this.state.user.img} alt="User" /></div>
