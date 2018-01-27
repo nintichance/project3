@@ -28,9 +28,27 @@ export const FormBody = styled.div`
     padding-right: 32px;
     padding-left: 32px;
 `
+export const FormField = styled.div`
+  position: relative;
+  padding: 0;
+  margin: 0;
+  border: 0;
+
+  & + & {
+    margin-top: 24px;
+  }
+
+  &:nth-last-of-type(2) {
+    margin-top: 32px;
+  }
+
+  &:last-of-type {
+    text-align: center;
+  }
+`
 
 export default {
-    FormWrapper, FormHeader, FormHeading, FormBody
+    FormWrapper, FormHeader, FormHeading, FormBody, FormField
 }
 
 // const sc = styled.default

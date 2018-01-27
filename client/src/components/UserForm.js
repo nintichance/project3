@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Redirect, Link } from 'react-router-dom'
 import NavBar from './NavBar'
 import { UserFormContainer } from './styled-components/Containers'
-import { FormWrapper, FormHeader, FormHeading, FormBody } from './styled-components/Form'
+import { FormWrapper, FormHeader, FormHeading, FormBody, FormField } from './styled-components/Form'
 
 class UserForm extends Component {
     constructor(props) {
@@ -50,7 +50,7 @@ class UserForm extends Component {
                 <FormWrapper>
                       <FormBody>
                 <form onSubmit={this._addNewUser}>
-                    <div>
+                    <FormField>
                         <FormHeader>
                             <FormHeading>New User</FormHeading>
                         </FormHeader>
@@ -60,9 +60,9 @@ class UserForm extends Component {
                             placeholder="First Name"
                             value={this.state.newUser.firstName}
                             onChange={this.handleInputChange} />
-                    </div>
+                    </FormField>
 
-                    <div>
+                    <FormField>
                         
                         <input
                             type="string"
@@ -70,23 +70,23 @@ class UserForm extends Component {
                             placeholder="Last Name"
                             value={this.state.newUser.lastName}
                             onChange={this.handleInputChange} />
-                    </div>
-                    <div>
+                    </FormField>
+                    <FormField>
                         <input
                             type="string"
                             name="img"
                             placeholder="Image URL"
                             value={this.state.newUser.img}
                             onChange={this.handleInputChange} />
-                    </div>
-                    <div>
+                    </FormField>
+                    <FormField>
                         <input
                             type="submit"
                             value="Add New User" />
-                    </div>
-                    <div>
+                    </FormField>
+                    <FormField>
                     <button><Link to="/users">Back</Link></button>
-                    </div>
+                    </FormField>
                 </form>
                 </FormBody>
                 </FormWrapper>}
