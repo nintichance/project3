@@ -1,6 +1,4 @@
 import React from 'react'
-import User from './User'
-import styled from 'styled-components'
 
 import { UserListContainer } from './styled-components/Containers'
 
@@ -35,7 +33,8 @@ const KidList = (props) => {
                 schedule={kid.schedule}
                 school={kid.school}
                 key={index}
-                kidId={kid._id} />
+                kidId={kid._id} 
+                showKids = {props.showKids}/>
         )
     })
     return (

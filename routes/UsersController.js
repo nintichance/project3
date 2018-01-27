@@ -32,9 +32,7 @@ router.get('/:userId', async(req, res)=>{
     try{
         const user = await User.findById(userId)
         console.log(user)
-        res.json({
-            user
-        })
+        res.json({user})
     }
     catch(err){
         console.log(err)

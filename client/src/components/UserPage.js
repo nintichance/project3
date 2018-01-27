@@ -1,7 +1,6 @@
 import React from 'react'
 import UserList from './UserList'
 import { Link } from 'react-router-dom'
-import styled from 'styled-components'
 
 import { UserPageContainer } from './styled-components/Containers'
 

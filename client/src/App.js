@@ -5,6 +5,7 @@ import UserPage from './components/UserPage'
 import Home from './components/Home'
 import UserForm from './components/UserForm'
 import UserShow from './components/UserShow'
+import KidPage from './components/UserShow'
 import axios from 'axios'
 
 //import UserTest from './components/UserTest'
@@ -123,7 +124,7 @@ class App extends Component {
           <Route exact path="/new-user" component={UserFormComponent} />
           {/* <Route exact path="/users/:userId" component={UserTestComponent} /> */}
           <Route exact path='/users/:userId' component={UserShow} />
-
+          <Route exact path='/users/:userId/kids' component={KidPage} />
         </Switch>
       </Router>
     )

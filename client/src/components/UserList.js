@@ -1,6 +1,5 @@
 import React from 'react'
 import User from './User'
-import styled from 'styled-components'
 
 import { UserListContainer } from './styled-components/Containers'
 

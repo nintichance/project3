@@ -17,7 +17,7 @@ const KidPage = (props) => {
                 <Link to="/new-kid">New Kid </Link>
             </div>
             <div>
-                <KidList kids={props.kids} getOneKid = {props.getOneKid} userId = {props.userId} kid={props.kid}/>
+                <KidList kids={props.kids} getOneKid = {props.getOneKid} userId = {props.userId} kid={props.kid} showKids = {props.showKids}/>
             </div>
         </UserPageContainer>
     )

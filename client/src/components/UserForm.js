@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Redirect, Link } from 'react-router-dom'
-import styled from 'styled-components'
 
 import { UserFormContainer } from './styled-components/Containers'
 
@@ -39,6 +38,8 @@ class UserForm extends Component {
         this.props.addNewUser(this.state.newUser)
         this._resetForm()
     }
+
+
     //REDIRECT TO USERS PAGE
     render() {
         return (
