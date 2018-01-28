@@ -123,30 +123,62 @@ class UserShow extends Component {
     showKids = () => {
         this.setState({ showKids: true })
     }
+    //Show User Edit Form
+    showEdit = () => {
+        this.setState({showEdit: true})
+    }
 
 
     render() {
 
+        let userCondition
+        if (this.state.redirect === true) {
+          userCondition = <Redirect to="/users">Users</Redirect>
+        } else if (this.state.showKids === true){
+          userCondition = <KidPage kids={this.state.kids} getOneKid={this.getOneKid} userId={this.props.match.params.userId} kid={this.state.kid} showKids={this.state.showKids} /> 
 
+        } else if (this.state.showEdit === true){
+            userCondition =  <UserEdit />
+        } else {
+            userCondition = <div>  
+            Hello from UserShow!
+        <div><img src={this.state.user.img} alt="User" /></div>
+            <div>Name: {this.state.user.firstName} {this.state.user.name}</div>
+            <div><button onClick={() => { this.deleteUser(this.props.match.params.userId) }}>Delete User</button></div>
+            {/* <div><button onClick={() => this.updateUser(this.props.match.params.userId)} {this.showEdit}>Edit User</button></div> */}
+            <div><button onClick={this.showEdit}>Edit User</button></div>
+            <Link to="/users"><button>Go Back</button></Link>
+            <Link to="/new-kid"><button>New Kid</button></Link>
+            <Link to={`/users/${this.props.match.params.userId}/kids`}><button onClick={this.showKids}>Kids</button></Link>
+        </div>
+        }
+        
         return (
-            <UserShowContainer>
-                
-                {this.state.redirect ? <Redirect to="/users">Users</Redirect> : null}
-                {this.state.showKids ? <KidPage kids={this.state.kids} getOneKid={this.getOneKid} userId={this.props.match.params.userId} kid={this.state.kid} showKids={this.state.showKids} /> :
-                    <div>  
+          <div>
+            {userCondition}
+          </div>
+        )
+        // return (
+        //     <UserShowContainer>
+            
+                {/* {this.state.redirect ? <Redirect to="/users">Users</Redirect> : null}
+                {this.state.showKids ? <KidPage kids={this.state.kids} getOneKid={this.getOneKid} userId={this.props.match.params.userId} kid={this.state.kid} showKids={this.state.showKids} /> : null}
+                 {this.state.showKids ? null:  <div>  
                         Hello from UserShow!
                     <div><img src={this.state.user.img} alt="User" /></div>
                         <div>Name: {this.state.user.firstName} {this.state.user.name}</div>
                         <div><button onClick={() => { this.deleteUser(this.props.match.params.userId) }}>Delete User</button></div>
-                        <div><button onClick={() => this.updateUser(this.props.match.params.userId)}>Edit User</button></div>
+                        <div><button onClick={() => this.updateUser(this.props.match.params.userId)} {this.showEdit}>Edit User</button></div>
+                        <div><button onClick={this.showEdit}>Edit User</button></div>
                         <Link to="/users"><button>Go Back</button></Link>
                         <Link to="/new-kid"><button>New Kid</button></Link>
                         <Link to={`/users/${this.props.match.params.userId}/kids`}><button onClick={this.showKids}>Kids</button></Link>
-                    </div>
-                }
-                <UserEdit />
-            </UserShowContainer>
-        )
+                    </div>}
+                   
+                {this.state.showEdit ? <UserEdit /> : null}
+                 */}
+        //     </UserShowContainer>
+        // )
 
     }
 
