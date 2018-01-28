@@ -6,6 +6,7 @@ import Home from './components/Home'
 import UserForm from './components/UserForm'
 import UserShow from './components/UserShow'
 import KidPage from './components/UserShow'
+import UserDelete from './components/UserDelete'
 import NavBar from './components/NavBar'
 import axios from 'axios'
 
@@ -60,6 +61,11 @@ class App extends Component {
 
   }
  
+  stateChange = () => {
+    console.log("IM CALLED")
+    const user = {...this.state.user}
+    this.setState({user})
+  }
 
   render() {
 
@@ -76,6 +82,7 @@ class App extends Component {
           <Route exact path="/new-user" component={UserFormComponent} />
           <Route path='/users/:userId' component={UserShow} />
           <Route exact path='/users/:userId/kids' component={KidPage} />
+          <UserDelete stateChange = {this.stateChange}/>
         </Switch>
       </Router>
     )

@@ -149,7 +149,7 @@ class UserShow extends Component {
             <Link to="/users"><button>Go Back</button></Link>
             <Link to="/new-kid"><button>New Kid</button></Link>
             <Link to={`/users/${this.props.match.params.userId}/kids`}><button onClick={this.showKids}>Kids</button></Link>
-            <UserDelete />
+            <UserDelete redirect ={this.state.redirect}/>
         </div>
         }
         
