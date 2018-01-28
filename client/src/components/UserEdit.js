@@ -3,6 +3,7 @@ import { Redirect, Link } from 'react-router-dom'
 
 import { UserFormContainer } from './styled-components/Containers'
 import { FormWrapper, FormHeader, FormHeading, FormBody, FormField, FormInput, FormButton, FormInputButton} from './styled-components/Form'
+
 import axios from 'axios'
 
 class UserEdit extends Component {
@@ -19,7 +20,6 @@ class UserEdit extends Component {
         this.state = { ...this.defaultState }
         console.log(`FORM STATE:`, this.state.updatedUser)
     }
-
     handleInputChange = (event) => {
         const attribute = event.target.name
         let value = event.target.value
@@ -31,6 +31,17 @@ class UserEdit extends Component {
         updatedUser[attribute] = value
         this.setState({updatedUser})
     }
+    // handleInputChange = (event) => {
+    //     const attribute = event.target.name
+    //     let value = event.target.value
+
+    //     if (attribute === 'firstName'){
+    //         value = String(value)
+    //     }
+    //     const updatedUser = {...this.state.updatedUser}
+    //     updatedUser[attribute] = value
+    //     this.setState({updatedUser})
+    // }
     resetForm = () => {
         const updatedUser = {...this.defaultState.updatedUser}
         this.setState({updatedUser, redirect: true})

@@ -3,6 +3,7 @@ import { Link, Redirect } from 'react-router-dom'
 import axios from 'axios'
 
 import { UserShowContainer } from './styled-components/Containers'
+import { Button } from './styled-components/Button'
 import KidPage from './KidPage'
 import UserDelete from './UserDelete'
 
@@ -143,12 +144,12 @@ class UserShow extends Component {
             Hello from UserShow!
         <div><img src={this.state.user.img} alt="User" /></div>
             <div>Name: {this.state.user.firstName} {this.state.user.name}</div>
-            <div><button onClick={() => { this.deleteUser(this.props.match.params.userId) }}>Delete User</button></div>
-            {/* <div><button onClick={() => this.updateUser(this.props.match.params.userId)} {this.showEdit}>Edit User</button></div> */}
-            <div><button onClick={this.showEdit}>Edit User</button></div>
-            <Link to="/users"><button>Go Back</button></Link>
-            <Link to="/new-kid"><button>New Kid</button></Link>
-            <Link to={`/users/${this.props.match.params.userId}/kids`}><button onClick={this.showKids}>Kids</button></Link>
+            <div><Button onClick={() => { this.deleteUser(this.props.match.params.userId) }}>Delete User</Button></div>
+            {/* <div><Button onClick={() => this.updateUser(this.props.match.params.userId)} {this.showEdit}>Edit User</Button></div> */}
+            <div><Button onClick={this.showEdit}>Edit User</Button></div>
+            <Link to="/users"><Button>Go Back</Button></Link>
+            <Link to="/new-kid"><Button>New Kid</Button></Link>
+            <Link to={`/users/${this.props.match.params.userId}/kids`}><Button onClick={this.showKids}>Kids</Button></Link>
             <UserDelete redirect ={this.state.redirect}/>
         </div>
         }
