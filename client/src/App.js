@@ -9,7 +9,6 @@ import KidPage from './components/UserShow'
 import NavBar from './components/NavBar'
 import axios from 'axios'
 
-//import UserTest from './components/UserTest'
 
 
 class App extends Component {
@@ -60,54 +59,6 @@ class App extends Component {
     }
 
   }
-
-  //TESTROUTE
-  //   async getUserInfo(userId) {
-  //     try{
-  //     const res = await axios.get(`/api/users/${userId}`)
-  //     const user = res.data
-  //     this.setState({user})
-  //     }
-  //     catch(err){
-  //         console.log(err)
-  //     }
-  // }
-
-
-  // updateUser = (event) =>{
-  //   event.preventDefault()
-  //   axios.patch(`/api/Users/${this.props.match.params.userId}`, this.state.user)
-  //   .then((res)=>{
-  //       const update = res.data
-  //       const user = this.state.user
-  //       //console.log('Upadated user infor', res.data)
-  //       this.props.updateUsers(user, update)
-
-  //   }).catch((err)=>{
-  //       console.log(err)
-  //   })
-  //   this.setState({redirctToUser: true})
-  //   }
-
-
-  //   updateUser = async (event) => {
-  //     try{
-  //       event.preventDefault()
-  //       await axios.patch(`/api/users/${this.props.match.params.userId}`, this.state.user)
-  //       const user = this.state.user
-  //       this.setState({user})
-  //     }
-  //     catch(err){
-  //       console.log(err)
-  //     }
-  //   }
-
-  // updateUsers = (user, updatedUsers) => {
-  //   const userToUpdate = this.state.users.indexOf(user)
-  //   const users = [...this.state.users]
-  //   users[userToUpdate] = updatedUsersthis.setState({users})
-  // }
-
  
 
   render() {
@@ -115,7 +66,7 @@ class App extends Component {
     console.log("ADDNEWUSER", this.addNewUser)
     const UserComponent = () => (<UserPage users={this.state.users} />)
     const UserFormComponent = (props) => (<UserForm addNewUser={this.addNewUser} {...props} />)
-    //const UserTestComponent = () => (<UserTest getUserInfo = {this.getUserInfo} user = {this.state.user}/>)
+
     return (
       <Router>
         <Switch>
@@ -123,8 +74,7 @@ class App extends Component {
           <Route exact path="/" component={Home} />
           <Route exact path="/users" component={UserComponent} />
           <Route exact path="/new-user" component={UserFormComponent} />
-          {/* <Route exact path="/users/:userId" component={UserTestComponent} /> */}
-          <Route exact path='/users/:userId' component={UserShow} />
+          <Route path='/users/:userId' component={UserShow} />
           <Route exact path='/users/:userId/kids' component={KidPage} />
         </Switch>
       </Router>

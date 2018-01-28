@@ -4,7 +4,9 @@ import axios from 'axios'
 
 import { UserShowContainer } from './styled-components/Containers'
 import KidPage from './KidPage'
-import NavBar from './NavBar'
+import { Nav } from './styled-components/Nav'
+
+import UserEdit from './UserEdit'
 
 class UserShow extends Component {
 
@@ -16,7 +18,8 @@ class UserShow extends Component {
             kids: [],
             kid: {},
             redirect: false,
-            showKids: false
+            showKids: false,
+            showEdit: false
         }
         this.state = { ...this.defaultState }
     }
@@ -59,8 +62,25 @@ class UserShow extends Component {
             console.log(err)
         }
     }
+//PATCH user
+  //   updateUser = async (event) => {
+  //     try{
+  //       event.preventDefault()
+  //       await axios.patch(`/api/users/${this.props.match.params.userId}`, this.state.user)
+  //       const user = this.state.user
+  //       this.setState({user})
+  //     }
+  //     catch(err){
+  //       console.log(err)
+  //     }
+  //   }
 
-    //1:11AM I was trying to get both my delete and my edit routes working!!! 
+  // updateUsers = (user, updatedUsers) => {
+  //   const userToUpdate = this.state.users.indexOf(user)
+  //   const users = [...this.state.users]
+  //   users[userToUpdate] = updatedUsersthis.setState({users})
+  // }
+
     async updateUser(userId) {
         try {
             console.log('EDIT', userId)
@@ -110,13 +130,11 @@ class UserShow extends Component {
 
         return (
             <UserShowContainer>
-
+                
                 {this.state.redirect ? <Redirect to="/users">Users</Redirect> : null}
                 {this.state.showKids ? <KidPage kids={this.state.kids} getOneKid={this.getOneKid} userId={this.props.match.params.userId} kid={this.state.kid} showKids={this.state.showKids} /> :
-                    <div>
-                        <NavBar />
+                    <div>  
                         Hello from UserShow!
-
                     <div><img src={this.state.user.img} alt="User" /></div>
                         <div>Name: {this.state.user.firstName} {this.state.user.name}</div>
                         <div><button onClick={() => { this.deleteUser(this.props.match.params.userId) }}>Delete User</button></div>
@@ -126,6 +144,7 @@ class UserShow extends Component {
                         <Link to={`/users/${this.props.match.params.userId}/kids`}><button onClick={this.showKids}>Kids</button></Link>
                     </div>
                 }
+                <UserEdit />
             </UserShowContainer>
         )
 

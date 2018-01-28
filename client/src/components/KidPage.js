@@ -12,9 +12,9 @@ const KidPage = (props) => {
     console.log("GETONEKID", props.getOneKid)
     return (
         <UserPageContainer>
-            <div>
+           
                 <KidList kids={props.kids} getOneKid = {props.getOneKid} userId = {props.userId} kid={props.kid} showKids = {props.showKids}/>
-            </div>
+          
         </UserPageContainer>
     )
 }

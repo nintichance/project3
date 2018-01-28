@@ -18,7 +18,7 @@ router.get('/', async (req, res) => {
 })
 
 
-//GET (read) a single user
+//GET (read) a single kid
 
 router.get('/:kidId', async(req, res)=>{
     const userId = req.params.userId

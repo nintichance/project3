@@ -32,6 +32,10 @@ export const Container = styled.div`
 `
 export const UserShowContainer = Container.extend`
     height: 100vh;
+    width: 100 vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `
 export const UserContainer = styled.div`
     margin-top: 100px;

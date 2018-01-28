@@ -29,14 +29,14 @@ class UserForm extends Component {
         newUser[attribute] = value
         this.setState({newUser})
     }
-    _resetForm = () => {
+    resetForm = () => {
         const newUser = {...this.defaultState.newUser}
         this.setState({newUser, redirect: true})
     }
-    _addNewUser = (event) => {
+    addNewUser = (event) => {
         event.preventDefault()
         this.props.addNewUser(this.state.newUser)
-        this._resetForm()
+        this.resetForm()
     }
 
 
@@ -48,7 +48,7 @@ class UserForm extends Component {
                 Hello from UserForm
                 {this.state.redirect ? <Redirect to="/users">Users</Redirect> :
                 <FormWrapper>
-                      <FormBody onSubmit={this._addNewUser}>
+                      <FormBody onSubmit={this.addNewUser}>
                     <FormField>
                         <FormHeader>
                             <FormHeading>New User</FormHeading>
@@ -57,7 +57,6 @@ class UserForm extends Component {
                             type="string"
                             name="firstName"
                             placeholder="First Name"
-                            value={this.state.newUser.firstName}
                             onChange={this.handleInputChange} />
                     </FormField>
 
@@ -67,7 +66,6 @@ class UserForm extends Component {
                             type="string"
                             name="lastName"
                             placeholder="Last Name"
-                            value={this.state.newUser.lastName}
                             onChange={this.handleInputChange} />
                     </FormField>
                     <FormField>
@@ -75,7 +73,6 @@ class UserForm extends Component {
                             type="string"
                             name="img"
                             placeholder="Image URL"
-                            value={this.state.newUser.img}
                             onChange={this.handleInputChange} />
                     </FormField>
                     <FormField>
