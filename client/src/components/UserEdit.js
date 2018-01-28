@@ -74,7 +74,8 @@ class UserEdit extends Component {
                             type="string"
                             name="firstName"
                             placeholder="First Name"
-                            onChange={this.handleInputChange} />
+                            onChange={this.handleInputChange} 
+                            value={this.props.user.firstName}/>
                     </FormField>
 
                     <FormField>
@@ -83,14 +84,16 @@ class UserEdit extends Component {
                             type="string"
                             name="lastName"
                             placeholder="Last Name"
-                            onChange={this.handleInputChange} />
+                            onChange={this.handleInputChange} 
+                            value={this.props.user.lastName}/>
                     </FormField>
                     <FormField>
                         <FormInput
                             type="string"
                             name="img"
                             placeholder="Image URL"
-                            onChange={this.handleInputChange} />
+                            onChange={this.handleInputChange} 
+                            value={this.props.user.img} />
                     </FormField>
                     <FormField>
                         <FormInputButton
