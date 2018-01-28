@@ -21,7 +21,7 @@ const Kid = (props) => {
            
                 <NavBar />
                 <Image src={props.img} alt="Placeholder User" />
-                <button onClick={() => { this.getOneKid }}>Click it</button>
+                <button onClick={() => { this.getOneKid() }}>Click it</button>
 
                 {/* WHY ISN'T THE BUTTON BELOW TAKING YOU BACK? */}
                 <Link to={`users/${props.userId}`}><button>Go Back</button></Link>

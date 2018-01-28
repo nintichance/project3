@@ -1,7 +1,5 @@
 import React from 'react'
 import KidList from './KidList'
-import { Link } from 'react-router-dom'
-//import styled from 'styled-components'
 
 import { UserPageContainer } from './styled-components/Containers'
 

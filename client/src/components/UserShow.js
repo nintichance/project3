@@ -4,7 +4,7 @@ import axios from 'axios'
 
 import { UserShowContainer } from './styled-components/Containers'
 import KidPage from './KidPage'
-import { Nav } from './styled-components/Nav'
+import UserDelete from './UserDelete'
 
 import UserEdit from './UserEdit'
 
@@ -149,13 +149,14 @@ class UserShow extends Component {
             <Link to="/users"><button>Go Back</button></Link>
             <Link to="/new-kid"><button>New Kid</button></Link>
             <Link to={`/users/${this.props.match.params.userId}/kids`}><button onClick={this.showKids}>Kids</button></Link>
+            <UserDelete />
         </div>
         }
         
         return (
-          <div>
+          <UserShowContainer>
             {userCondition}
-          </div>
+          </UserShowContainer>
         )
     }
 }

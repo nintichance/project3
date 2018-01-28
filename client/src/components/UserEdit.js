@@ -17,8 +17,9 @@ class UserEdit extends Component {
             redirect: false
         }
         this.state = { ...this.defaultState }
-        console.log(`FORM STATE:`, this.state.newUser)
+        console.log(`FORM STATE:`, this.state.updatedUser)
     }
+
     handleInputChange = (event) => {
         const attribute = event.target.name
         let value = event.target.value
@@ -26,13 +27,13 @@ class UserEdit extends Component {
         if (attribute === 'firstName'){
             value = String(value)
         }
-        const newUser = {...this.state.newUser}
-        newUser[attribute] = value
-        this.setState({newUser})
+        const updatedUser = {...this.state.updatedUser}
+        updatedUser[attribute] = value
+        this.setState({updatedUser})
     }
     resetForm = () => {
-        const newUser = {...this.defaultState.newUser}
-        this.setState({newUser, redirect: true})
+        const updatedUser = {...this.defaultState.updatedUser}
+        this.setState({updatedUser, redirect: true})
     }
 
     updateUserState = (event) => {
@@ -63,7 +64,7 @@ class UserEdit extends Component {
             <UserFormContainer>
 
                 Hello from UserEdit
-                {/* {this.state.redirect ? <Redirect to="/users">Users</Redirect> : */}
+                {this.state.redirect ? <Redirect to={`/users/${this.props.match.params.userId}`}>Users</Redirect> :
                 <FormWrapper>
                       <FormBody onSubmit={this.updateUser}>
                     <FormField>
@@ -105,7 +106,7 @@ class UserEdit extends Component {
                     </FormField>
                 </FormBody>
                 </FormWrapper>
-                {/* } */}
+                }
             </UserFormContainer>
         )
 
