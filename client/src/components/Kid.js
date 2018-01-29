@@ -10,12 +10,11 @@ import NavBar from './NavBar'
 
 
 const Kid = (props) => {
-    console.log('STUFF', props.emergencyContact)
-    console.log("KIDSDSDS", props.getOneKid)
-
-    const getOneKid = (userId, kidId) => {
+ 
+   const getOneKid = (event) => {
+        event.preventDefault()
         console.log("CLICKEDHERE!!!")
-        props.getOneKid(userId, kidId)
+        props.getOneKid(props.userId, props.kidId)
     }
 
     return (
@@ -24,7 +23,7 @@ const Kid = (props) => {
            
                 <NavBar />
                 <Image src={props.img} alt="Placeholder User" />
-                <Button onClick={() => { this.getOneKid() }}>Click it</Button>
+                <button onClick={() => {this.getOneKid}}>View Kid</button>
 
                 {/* WHY ISN'T THE Button BELOW TAKING YOU BACK? */}
                 <Link to={`users/${props.userId}`}><Button>Go Back</Button></Link>

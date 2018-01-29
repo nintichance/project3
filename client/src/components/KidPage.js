@@ -6,8 +6,7 @@ import { UserPageContainer } from './styled-components/Containers'
 
 
 const KidPage = (props) => {
-    console.log('KIDS', props.kids, props.kid)
-    console.log("GETONEKID", props.getOneKid)
+
     return (
         <UserPageContainer>
            

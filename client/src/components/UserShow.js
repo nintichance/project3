@@ -28,7 +28,6 @@ class UserShow extends Component {
     componentWillMount() {
         this.getUserInfo()
         this.getKidData()
-        this.getOneKid()
     }
 
     async getUserInfo() {
@@ -56,8 +55,7 @@ class UserShow extends Component {
             console.log('DELETE', userId)
             await axios.get('/api/users/' + userId + '/delete')
             this.redirectToUser()
-
-
+            window.location.reload()
 
         }
         catch (err) {
@@ -112,10 +110,11 @@ class UserShow extends Component {
         console.log("CLICKED!")
         try {
             const res = await axios.get(`/api/users/${userId}/kids/${kidId}`)
+            console.log("MEEEE", res)
             const kid = res.data
             console.log('KIDINFO', kid)
 
-            this.setState(kid)
+            this.setState({kid})
         }
         catch (err) {
             console.log(err)
@@ -132,6 +131,7 @@ class UserShow extends Component {
 
 
     render() {
+        console.log("KIDDDDD", this.state.kid)
         let userCondition
         if (this.state.redirect === true) {
           userCondition = <Redirect to="/users">Users</Redirect>
