@@ -6,12 +6,12 @@ const User = require('../db/models/User')
 
 router.get('/', async (req, res) => {
     try {
-        // const userId = req.params.userId
-        // const kidId = req.params.kidId
-        // const user = await User.findById(userId)
-        // const kid = user.kids.id(kidId)
-        // res.json(kid.activities)
-        res.send("Hello")
+        const userId = req.params.userId
+        const kidId = req.params.kidId
+        const user = await User.findById(userId)
+        const kid = user.kids.id(kidId)
+        res.json(kid.activities)
+        
     }
     catch (err) {
         console.log(err)
