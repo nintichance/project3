@@ -6,11 +6,11 @@ import { UserPageContainer } from './styled-components/Containers'
 
 
 const KidPage = (props) => {
-    console.log("ZOOP", props.kid)
+    console.log("KIDDDD2222", props.kid)
     return (
         <UserPageContainer>
            
-                <KidList kids={props.kids} getOneKid = {props.getOneKid} userId = {props.userId} kid={props.kid} showKids = {props.showKids}/>
+                <KidList showKid = {props.showKid} getActivities={props.getActivities} kids={props.kids} getOneKid = {props.getOneKid} userId = {props.userId} kid={props.kid} showKids = {props.showKids}/>
           
         </UserPageContainer>
     )

@@ -21,50 +21,25 @@ class UserEdit extends Component {
         console.log(`FORM STATE:`, this.state.updatedUser)
     }
     handleInputChange = (event) => {
+        console.log("IN HANDLECHANGE")
         const attribute = event.target.name
         let value = event.target.value
-
-        if (attribute === 'firstName'){
-            value = String(value)
-        }
+        console.log("ATTRIBUTE", attribute, "VALUE", value)
         const updatedUser = {...this.state.updatedUser}
         updatedUser[attribute] = value
         this.setState({updatedUser})
     }
-    // handleInputChange = (event) => {
-    //     const attribute = event.target.name
-    //     let value = event.target.value
 
-    //     if (attribute === 'firstName'){
-    //         value = String(value)
-    //     }
-    //     const updatedUser = {...this.state.updatedUser}
-    //     updatedUser[attribute] = value
-    //     this.setState({updatedUser})
-    // }
     resetForm = () => {
         const updatedUser = {...this.defaultState.updatedUser}
         this.setState({updatedUser, redirect: true})
     }
 
-    updateUserState = (event) => {
-        event.preventDefault()
-        this.props.updateUser(this.state.updatedUser)
-        this.resetForm()
-    }
     updateUser = (event) =>{
-    event.preventDefault()
-    axios.patch(`/api/Users/${this.props.match.params.userId}`, this.state.user)
-    .then((res)=>{
-        const update = res.data
-        const user = this.state.user
-        //console.log('Upadated user infor', res.data)
-        this.props.updateUsers(user, update)
-        this.updateUserState()
-    }).catch((err)=>{
-        console.log(err)
-    })
-    this.setState({redirctToUser: true})
+        event.preventDefault()
+        this.props.updateUser(this.props.userId, this.state.updatedUser)
+        this.resetForm()
+        this.setState({redirctToUser: true})
     }
 
 
@@ -75,7 +50,7 @@ class UserEdit extends Component {
             <UserFormContainer>
 
                 Hello from UserEdit
-                {this.state.redirect ? <Redirect to={`/users/${this.props.match.params.userId}`}>Users</Redirect> :
+                {this.state.redirect ? <Redirect to={`/users`}>Users</Redirect> :
                 <FormWrapper>
                       <FormBody onSubmit={this.updateUser}>
                     <FormField>
@@ -85,9 +60,9 @@ class UserEdit extends Component {
                         <FormInput
                             type="string"
                             name="firstName"
-                            placeholder="First Name"
+                            placeholder={this.props.user.firstName}
                             onChange={this.handleInputChange} 
-                            value={this.props.user.firstName}/>
+                            value={this.state.updatedUser.firstName}/>
                     </FormField>
 
                     <FormField>
@@ -95,22 +70,22 @@ class UserEdit extends Component {
                         <FormInput
                             type="string"
                             name="lastName"
-                            placeholder="Last Name"
+                            placeholder={this.props.user.lastName}
                             onChange={this.handleInputChange} 
-                            value={this.props.user.lastName}/>
+                            value={this.state.updatedUser.lastName}/>
                     </FormField>
                     <FormField>
                         <FormInput
                             type="string"
                             name="img"
-                            placeholder="Image URL"
+                            placeholder={this.props.user.img}
                             onChange={this.handleInputChange} 
-                            value={this.props.user.img} />
+                            value={this.state.updatedUser.img} />
                     </FormField>
                     <FormField>
                         <FormInputButton
                             type="submit"
-                            value="Add New User" />
+                            value="Update User" />
                     </FormField>
                     <FormField>
                     <FormButton><Link to="/users">Back</Link></FormButton>

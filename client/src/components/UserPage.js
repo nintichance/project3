@@ -7,7 +7,7 @@ import { UserPageContainer } from './styled-components/Containers'
 
 
 const UserPage = (props) => {
-    // console.log(props.users)
+    console.log("KIDDD2",props.kid)
     return (
         <UserPageContainer>
             <NavBar />

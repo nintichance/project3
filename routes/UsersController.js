@@ -55,16 +55,21 @@ router.get('/:userId/delete', async(req, res)=>{
 
 //Update a user
 
+
 router.patch('/:userId', async (req, res)=>{
     try{
         const updatedUser = req.body
         const userId = req.params.userId
-        await User.findByIdAndUpdate(userId, updatedUser)
-        res.json(user)
+        console.log("HEYYYYYY", updatedUser, userId)
+        const newUpdatedUser = await User.findByIdAndUpdate(userId, updatedUser.updatedUser)
+        console.log("Updated user successfully to: ", newUpdatedUser)
+        res.json(updatedUser)
     }
     catch(err){
         console.log(err)
     }    
 })
+
+
 
 module.exports = router

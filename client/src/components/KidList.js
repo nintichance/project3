@@ -8,10 +8,11 @@ const KidList = (props) => {
 
     console.log("EEEE", props.kid)
     const kidList = props.kids.map((kid, index) => {
-        console.log(kid.firstName, kid._id)
-        console.log("KIDSLIST", props.getOneKid)
+        console.log("KIDD3333", props.kid)
         return (
             <Kid
+                showKid = {props.showKid}
+                getActivities = {props.getActivities}
                 kid = {props.kid}
                 getOneKid = {props.getOneKid}
                 userId = {props.userId}
@@ -34,7 +35,8 @@ const KidList = (props) => {
                 school={kid.school}
                 key={index}
                 kidId={kid._id} 
-                showKids = {props.showKids}/>
+                showKids = {props.showKids}
+                index={props.index}/>
         )
     })
     return (

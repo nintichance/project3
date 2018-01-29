@@ -9,6 +9,7 @@ export const Container = styled.div`
     background: linear-gradient(to right, rgb(255, 255, 255) , rgb(253,238,238));
    
 `
+
 export const UserShowContainer = Container.extend`
     height: 100vh;
     width: 100 vw;
@@ -23,6 +24,10 @@ export const UserContainer = styled.div`
     flex-direction: column;
     linear-gradient(to right, rgb(0, 204, 255) , rgb(250,215,215));
 `
+export const KidContainer = UserContainer.extend`
+    
+`
+
 export const  HomeContainer = Container.extend`
   justify-content: center;
   align-items: center;
@@ -89,5 +94,5 @@ export const UserPageContainer = Container.extend`
     height: 200vh;
 `
 export default {
-    UserShowContainer, UserListContainer, UserFormContainer, UserContainer, UserPageContainer, HomeContainer
+    UserShowContainer, UserListContainer, UserFormContainer, UserContainer, UserPageContainer, HomeContainer, KidContainer
 }

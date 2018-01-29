@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 
 import { UserContainer } from './styled-components/Containers'
 import { Button } from './styled-components/Button'
+import { HTwo} from './styled-components/HeaderFont'
 
 import { Image } from './styled-components/Images'
 import NavBar from './NavBar'
@@ -11,25 +12,24 @@ import NavBar from './NavBar'
 
 const KidShow = (props) => {
     
-   const getOneKid = (event) => {
-        event.preventDefault()
-        console.log("CLICKEDHERE!!!")
-        props.getOneKid(props.userId, props.kidId)
-        console.log("YAY", props.kid)
-    }
-
+ console.log("Kid55555", props.kid)
     return (
         
         <UserContainer>
-           
-                <NavBar />
-                <Image src={props.img} alt="Placeholder User" />
-                <Button onClick={getOneKid}>View Kid</Button>
-                {/* <Button onClick={getOneKid}>View Kid</Button> */}
-
-                {/* WHY ISN'T THE Button BELOW TAKING YOU BACK? */}
-                <Link to={`users/${props.userId}`}><Button>Go Back</Button></Link>
-                <Link to={`users/${props.userId}/kids/${props.kidId}`}><Button onClick={this.getOneKid}>Kid Page</Button></Link>
+         <div><img src={props.kid.img} alt="User" /></div>
+        <div><HTwo>Child: {props.kid.firstName} {props.kid.lastName}</HTwo></div> 
+        <div>Babysit On: {props.kid.schedule}</div>
+        <div>School: {props.kid.school}</div>
+        <div>Remember!: {props.kid.description}</div>
+        <div>Diet: {props.kid.diet}</div>
+        <div>Pay: {props.kid.payRate}</div>
+        <div>Parents: {props.kid.parentTwo}{props.kid.parentOne}</div>
+        <div>Contact Parents: {props.kid.parentTwoContacts}{props.kid.parentOneContacts}</div>
+        <div>Emergency Contact: {props.kid.emergencyName}</div>
+        <div>Emergency Contact Relationship: {props.kid.emergencyRelation}</div>
+        <div>Emergency Contact Number: {props.kid.emergencyContact}</div>
+        {/* <div><Button onClick={() => { this.deleteUser(this.props.match.params.userId) }}>Delete User</Button></div> */}
+       
          
         </UserContainer>
     )
