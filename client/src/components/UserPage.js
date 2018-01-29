@@ -11,7 +11,7 @@ const UserPage = (props) => {
     return (
         <UserPageContainer>
             <NavBar />
-            Hello from UserPage
+
             <div>
                 <Link to="/new-user">New User </Link>
             </div>

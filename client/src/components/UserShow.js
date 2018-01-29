@@ -148,7 +148,7 @@ class UserShow extends Component {
             userCondition = <Redirect to="/users">Users</Redirect>
         } else if (this.state.showKids === true) {
             userCondition = <KidPage 
-                activities="Nothing"
+                            activities="Nothing"
                             kids={this.state.kids} 
                             getActivities="testing"
                             getOneKid={this.getOneKid} 

@@ -81,7 +81,7 @@ class UserForm extends Component {
                             value="Add New User" />
                     </FormField>
                     <FormField>
-                    <FormButton><Link to="/users">Back</Link></FormButton>
+                    <FormButton><Link to="/users">Cancel</Link></FormButton>
                     </FormField>
                 </FormBody>
                 </FormWrapper>}
