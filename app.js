@@ -52,6 +52,9 @@ app.use('/api/users', UsersController)
 const KidsController = require('./routes/KidsController')
 app.use('/api/users/:userId/kids', KidsController)
 
+const ActivitiesController = require('./routes/ActivitiesController')
+app.use('/api/users/:userId/kids/:kidId/activities', ActivitiesController )
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   const err = new Error('Not Found')

@@ -19,6 +19,7 @@ const Kid = (props) => {
     }
 
     return (
+        
         <UserContainer>
            
                 <NavBar />

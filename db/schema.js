@@ -5,28 +5,22 @@ mongoose.Promise = global.Promise
 
 const ActivitySchema = new Schema({
     name: {
-        type: String,
-        required: true
+        type: String
     },
     startTime: {
-        type: String,
-        required: true
+        type: String
     },
     endTime: {
-        type: String,
-        required: true
+        type: String
     },
     location: {
-        type: String,
-        required: true
+        type: String
     },
     contactName: {
-        type: String,
-        required: true
+        type: String
     },
     contactNumber: {
-        type: String,
-        required: true
+        type: String
     }
 },
 {
@@ -40,24 +34,19 @@ const KidSchema = new Schema({
         type: String
     },
     lastName: {
-        type: String,
-        required: true
+        type: String
     },
     age: {
-        type: Number,
-        required: true
+        type: Number
     },
     school: {
-        type: String,
-        required: false
+        type: String
     },
     schedule: {
-        type: String,
-        required: true
+        type: String
     },
     description: {
-        type: String,
-        required: true
+        type: String
     },
     img: {
         type: String,
@@ -71,52 +60,41 @@ const KidSchema = new Schema({
     },
     activities: [ActivitySchema],
     parentOne: {
-        type: String,
-        required: true
+        type: String
     },
     parentTwo: {
-        type: String,
-        required: true
+        type: String
     },
     parentOneContact: {
-        type: String,
-        required: true
+        type: String
     },
     parentTwoContact: {
-        type: String,
-        required: true
+        type: String
     },
     payRate: {
-        type: String,
-        required: false
+        type: String
     },
     emergencyName: {
-        type: String,
-        required: true
+        type: String
     },
     emergencyRelation: {
-        type: String,
-        required: true
+        type: String
     },
     emergencyContact: {
-        type: String,
-        required: true
+        type: String
     }
 })
 
 const UserSchema = new Schema(
     {   firstName: {
-        type: String,
-        required: false
+        type: String
     },
         lastName: {
-            type: String,
-            required: false
+            type: String
         },
         img: {
             type: String,
-            default: 'https://i.imgur.com/QKCVUFz.jpg?3',
-            required: false
+            default: 'https://i.imgur.com/QKCVUFz.jpg?3'
         },
         kids: [KidSchema]
     },

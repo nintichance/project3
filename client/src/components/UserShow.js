@@ -17,7 +17,7 @@ class UserShow extends Component {
         this.defaultState = {
             user: {},
             kids: [],
-            kid: {},
+            kid: {}, 
             redirect: false,
             showKids: false,
             showEdit: false
@@ -28,6 +28,7 @@ class UserShow extends Component {
     componentWillMount() {
         this.getUserInfo()
         this.getKidData()
+        this.getOneKid()
     }
 
     async getUserInfo() {
@@ -106,6 +107,7 @@ class UserShow extends Component {
             console.log(err)
         }
     }
+
     async getOneKid(userId, kidId) {
         console.log("CLICKED!")
         try {
@@ -118,7 +120,6 @@ class UserShow extends Component {
         catch (err) {
             console.log(err)
         }
-
     }
     //Show Kids Component Only
     showKids = () => {
@@ -138,10 +139,11 @@ class UserShow extends Component {
           userCondition = <KidPage kids={this.state.kids} getOneKid={this.getOneKid} userId={this.props.match.params.userId} kid={this.state.kid} showKids={this.state.showKids} /> 
 
         } else if (this.state.showEdit === true){
-            userCondition =  <UserEdit user = {this.state.user} userId={this.props.match.params.userId}/>
+            userCondition =  <UserEdit user = {this.state.user} userId={this.props.match.params.userId} />
         } else {
             userCondition = <div>  
             Hello from UserShow!
+                    
         <div><img src={this.state.user.img} alt="User" /></div>
             <div>Name: {this.state.user.firstName} {this.state.user.name}</div>
             <div><Button onClick={() => { this.deleteUser(this.props.match.params.userId) }}>Delete User</Button></div>

@@ -58,8 +58,10 @@ User.remove({}).then(() => {
         contactName: 'Coach Carter',
         contactNumber: '404-555-6734'
     })
-    sylvia.kids.push(micah)
+    
     micah.activities.push(soccer)
+    console.log("THIS IS MICAH___________", micah)
+    sylvia.kids.push(micah)    
     return sylvia.save()
 })
 
@@ -98,6 +100,7 @@ User.remove({}).then(() => {
             contactName: 'Anna Krindrel',
             contactNumber: '404-555-6423'
         })
+
         arlind.kids.push(lola)
         lola.activities.push(piano)
         return arlind.save()
