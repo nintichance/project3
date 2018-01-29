@@ -101,8 +101,11 @@ User.remove({}).then(() => {
             contactNumber: '404-555-6423'
         })
 
-        arlind.kids.push(lola)
+        
+
+        
         lola.activities.push(piano)
+        arlind.kids.push(lola)
         return arlind.save()
     })
     .then(() => {
@@ -140,8 +143,10 @@ User.remove({}).then(() => {
             contactName: 'Dr. Leiland Jones',
             contactNumber: '404-555-4353'
         })
-        nina.kids.push(ngozi)
+
+        
         ngozi.activities.push(pt)
+        nina.kids.push(ngozi)
         return nina.save()
     })
     .catch((error) => {

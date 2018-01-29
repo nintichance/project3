@@ -11,19 +11,20 @@ import KidShow from './KidShow'
 
 
 const Kid = (props) => {
-    console.log("KID4444", props.kid)
+    console.log("ACT4444", props.activities)
+    console.log("TRUE", props.userId, props.kidId, props.index)
    const getOneKid = (event) => {
         event.preventDefault()
         console.log("CLICKEDHERE!!!")
         props.getOneKid(props.userId, props.kidId)
-        props.getActivities(props.userId, props.kidId, props.index)
+        // props.getActivities(props.userId, props.kidId, props.index)
         console.log("YAY", props.kid)
     }
 
     return (
         
         <UserContainer>
-            {/* {props.showKid ?  <KidShow {...props}/> : null} */}
+            {props.showKid ?  <KidShow {...props}/> : null}
              <NavBar />
                 <Image src={props.img} alt="Placeholder User" />
                 <Button onClick={getOneKid}>View Kid</Button>
@@ -32,7 +33,6 @@ const Kid = (props) => {
                 <Link to={`users/${props.userId}`}><Button>Go Back</Button></Link>
                 <Link to={`users/${props.userId}/kids/${props.kidId}`}><Button onClick={this.getOneKid}>Kid Page</Button></Link>
             
-           < KidShow kid={props.kid}/>
         </UserContainer>
 
     )

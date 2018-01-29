@@ -8,9 +8,10 @@ const KidList = (props) => {
 
     console.log("EEEE", props.kid)
     const kidList = props.kids.map((kid, index) => {
-        console.log("KIDD3333", props.kid)
+        console.log("ACT3333", props.activities, index)
         return (
             <Kid
+                activities={props.activities}
                 showKid = {props.showKid}
                 getActivities = {props.getActivities}
                 kid = {props.kid}

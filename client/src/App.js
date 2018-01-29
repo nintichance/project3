@@ -72,6 +72,7 @@ class App extends Component {
     console.log("ADDNEWUSER", this.addNewUser)
     const UserComponent = () => (<UserPage users={this.state.users} />)
     const UserFormComponent = (props) => (<UserForm addNewUser={this.addNewUser} {...props} />)
+    const KidPageComponent = (props) => (<KidPage users={this.state.users} {...props}/>)
 
     return (
       <Router>
@@ -81,7 +82,7 @@ class App extends Component {
           <Route exact path="/users" component={UserComponent} />
           <Route exact path="/new-user" component={UserFormComponent} />
           <Route path='/users/:userId' component={UserShow} />
-          <Route exact path='/users/:userId/kids' component={KidPage} />
+          {/* <Route exact path='/users/:userId/kids' render={KidPageComponent} /> */}
           <UserDelete stateChange = {this.stateChange}/>
         </Switch>
       </Router>

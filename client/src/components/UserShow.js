@@ -20,14 +20,14 @@ class UserShow extends Component {
             user: {},
             kids: [],
             kid: {},
-            activities: [],
+            // activities: [],
             redirect: false,
             showKids: false,
             showEdit: false,
             showKid: false
         }
         this.getOneKid = this.getOneKid.bind(this)
-        this.getActivities = this.getActivities.bind(this)
+        // this.getActivities = this.getActivities.bind(this)
         this.updateUser = this.updateUser.bind(this)
         this.state = { ...this.defaultState }
     }
@@ -114,19 +114,19 @@ class UserShow extends Component {
     }
 
     //GET activities
-    async getActivities(userId, kidId) {
-        try {
-            console.log("DID IT", userId, kidId)
-
-            const res = await axios.get(`/api/users/${userId}/kids/${kidId}/activities`)
-            const activities = res.data
-            console.log("WOAH", activities)
-            this.setState({ activities })
-        }
-        catch (err) {
-            console.log(err)
-        }
-    }
+    // async getActivities(userId, kidId) {
+    //     try {
+    //         console.log("DID IT", userId, kidId)
+    //         console.log(`/api/users/${userId}/kids/${kidId}/activities`)
+    //         const res = await axios.get(`/api/users/${userId}/kids/${kidId}/activities`)
+    //         const activities = res.data
+    //         console.log("WOAH", activities)
+    //         this.setState({ activities })
+    //     }
+    //     catch (err) {
+    //         console.log(err)
+    //     }
+    // }
 
 
     //Show Kids Component Only
@@ -140,12 +140,22 @@ class UserShow extends Component {
 
 
     render() {
-        console.log("KIDDDD", this.state.kid)
+        console.log("Rendering UserShow")
+        const userId = this.props.match.params.userId
+        console.log("USERID1", userId)
         let userCondition
         if (this.state.redirect === true) {
             userCondition = <Redirect to="/users">Users</Redirect>
         } else if (this.state.showKids === true) {
-            userCondition = <KidPage kids={this.state.kids} getActivities={this.getActivities} getOneKid={this.getOneKid} userId={this.props.match.params.userId} kid={this.state.kid} showKids={this.state.showKids} showKid={this.state.showKid} />
+            userCondition = <KidPage 
+                activities="Nothing"
+                            kids={this.state.kids} 
+                            getActivities="testing"
+                            getOneKid={this.getOneKid} 
+                            userId={this.props.match.params.userId} 
+                            kid={this.state.kid} 
+                            showKids={this.state.showKids} 
+                            showKid={this.state.showKid} />
 
         } else if (this.state.showEdit === true) {
             userCondition = <UserEdit user={this.state.user} userId={this.props.match.params.userId} updateUser={this.updateUser} />
