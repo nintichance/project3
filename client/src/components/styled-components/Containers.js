@@ -24,7 +24,8 @@ export const UserContainer = styled.div`
     linear-gradient(to right, rgb(0, 204, 255) , rgb(250,215,215));
 `
 export const  HomeContainer = Container.extend`
-  justify-items: center;
+  justify-content: center;
+  align-items: center;
   height: 100vh;
   width: 100 vw;
   background: linear-gradient(270deg, #17d1a1, #d9a5ef);

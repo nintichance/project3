@@ -6,7 +6,7 @@ import { UserPageContainer } from './styled-components/Containers'
 
 
 const KidPage = (props) => {
-
+    console.log("ZOOP", props.kid)
     return (
         <UserPageContainer>
            

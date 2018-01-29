@@ -6,7 +6,7 @@ import Kid from './Kid'
 
 const KidList = (props) => {
 
-
+    console.log("EEEE", props.kid)
     const kidList = props.kids.map((kid, index) => {
         console.log(kid.firstName, kid._id)
         console.log("KIDSLIST", props.getOneKid)

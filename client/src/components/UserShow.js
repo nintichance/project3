@@ -18,10 +18,12 @@ class UserShow extends Component {
             user: {},
             kids: [],
             kid: {}, 
+            activities: [],
             redirect: false,
             showKids: false,
             showEdit: false
         }
+        this.getOneKid = this.getOneKid.bind(this)
         this.state = { ...this.defaultState }
     }
 
@@ -29,6 +31,7 @@ class UserShow extends Component {
         this.getUserInfo()
         this.getKidData()
     }
+
 
     async getUserInfo() {
         try {
@@ -108,13 +111,13 @@ class UserShow extends Component {
 
     async getOneKid(userId, kidId) {
         console.log("CLICKED!")
+        console.log("HEREHRE", userId, kidId)
         try {
             const res = await axios.get(`/api/users/${userId}/kids/${kidId}`)
             console.log("MEEEE", res)
             const kid = res.data
             console.log('KIDINFO', kid)
-
-            this.setState({kid})
+            this.setState({kid: kid})
         }
         catch (err) {
             console.log(err)

@@ -9,8 +9,9 @@ const Home = () => {
     return(
         <HomeContainer>
             <NavBar />
-            Hello from Home
-            <Link to='/users'>Users</Link>
+            <h1>sat.app</h1>
+            <Link to='/new-user'>New User</Link>
+            <p>The babysitting app that lets you keep track of your kids' schedules!</p>
         </HomeContainer>
     )
 }

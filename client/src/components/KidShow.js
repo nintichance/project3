@@ -1,30 +1,39 @@
-// import React, { Component } from 'react'
-// import { Link, Redirect } from 'react-router-dom'
-// import axios from 'axios'
+import React from 'react'
+import { Link } from 'react-router-dom'
 
-// import styled from 'styled-components'
-// import { UserShowContainer } from './styled-components/Containers'
-// import KidPage from './KidPage'
 
-// const KidShow = () => {
+import { UserContainer } from './styled-components/Containers'
+import { Button } from './styled-components/Button'
 
-//     return (
-//         <UserShowContainer>
-//             {this.state.redirect ? <Redirect to="/users">Users</Redirect> :
-//                 <div>
-//                     Hello from UserShow!
-//                     <KidPage kids={this.state.kids} />
-//                     <div><img src={this.state.user.img} alt="User" /></div>
-//                     <div>Name: {this.state.user.firstName} {this.state.user.name}</div>
-//                     <div><button onClick={() => { this.deleteUser(this.props.match.params.userId) }}>Delete User</button></div>
-//                     <div><button onClick={() => this.updateUser(this.props.match.params.userId)}>Edit User</button></div>
-//                     <Link to="/users"><button>Go Back</button></Link>
-//                     <Link to="/new-kid"><button>New Kid</button></Link>
-//                 </div>
-//             }
-//         </UserShowContainer>
-//     )
+import { Image } from './styled-components/Images'
+import NavBar from './NavBar'
 
-// }
 
-// export default KidShow
+const KidShow = (props) => {
+    
+   const getOneKid = (event) => {
+        event.preventDefault()
+        console.log("CLICKEDHERE!!!")
+        props.getOneKid(props.userId, props.kidId)
+        console.log("YAY", props.kid)
+    }
+
+    return (
+        
+        <UserContainer>
+           
+                <NavBar />
+                <Image src={props.img} alt="Placeholder User" />
+                <Button onClick={getOneKid}>View Kid</Button>
+                {/* <Button onClick={getOneKid}>View Kid</Button> */}
+
+                {/* WHY ISN'T THE Button BELOW TAKING YOU BACK? */}
+                <Link to={`users/${props.userId}`}><Button>Go Back</Button></Link>
+                <Link to={`users/${props.userId}/kids/${props.kidId}`}><Button onClick={this.getOneKid}>Kid Page</Button></Link>
+         
+        </UserContainer>
+    )
+
+}
+
+export default KidShow
