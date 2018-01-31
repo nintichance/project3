@@ -17,6 +17,13 @@ export const UserShowContainer = Container.extend`
     display: flex;
     align-items: center;
 `
+export const OtherContainer = styled.div`
+
+height: 500vh;
+width: 100 vw;
+display: flex;
+    linear-gradient(to right, rgb(0, 204, 255) , rgb(250,215,215));
+`
 export const UserContainer = styled.div`
     margin-top: 100px;
     display: flex;
@@ -73,5 +80,5 @@ export const UserPageContainer = Container.extend`
     height: 200vh;
 `
 export default {
-    UserShowContainer, UserListContainer, UserFormContainer, UserContainer, UserPageContainer, HomeContainer, KidContainer
+    OtherContainer, UserShowContainer, UserListContainer, UserFormContainer, UserContainer, UserPageContainer, HomeContainer, KidContainer
 }

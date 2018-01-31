@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 
-import { UserShowContainer } from './styled-components/Containers'
+import { OtherContainer } from './styled-components/Containers'
 import { Button } from './styled-components/Button'
 
 import { Image } from './styled-components/Images'
@@ -19,7 +19,7 @@ const Kid = (props) => {
 
 
     return (
-        <UserShowContainer>
+        <OtherContainer>
             {props.showKid ? <KidShow {...props} /> :
                 <div>
                     <NavBar />
@@ -27,7 +27,7 @@ const Kid = (props) => {
                     <Button onClick={getOneKid}>View Kid</Button>
                 </div>
             }
-        </UserShowContainer>
+        </OtherContainer>
 
     )
 
