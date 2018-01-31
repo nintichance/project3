@@ -1,7 +1,7 @@
 import React from 'react'
 import KidList from './KidList'
 
-import { UserPageContainer } from './styled-components/Containers'
+import { UserShowContainer } from './styled-components/Containers'
 
 
 
@@ -9,7 +9,7 @@ const KidPage = (props) => {
     console.log("Rendering KidPage")
     console.log("users", props)
     return (
-        <UserPageContainer>
+        <UserShowContainer>
            
                 <KidList 
                 activities={props.activities} 
@@ -21,7 +21,7 @@ const KidPage = (props) => {
                 kid={props.kid} 
                 showKids = {props.showKids}/>
           
-        </UserPageContainer>
+        </UserShowContainer>
     )
 }
 

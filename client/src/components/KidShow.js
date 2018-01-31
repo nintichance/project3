@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 
-import { UserContainer } from './styled-components/Containers'
+import { UserShowContainer } from './styled-components/Containers'
 import { Button } from './styled-components/Button'
 import { HTwo} from './styled-components/HeaderFont'
 
@@ -15,7 +15,8 @@ const KidShow = (props) => {
  console.log("ACT55555", props.kid.activities)
     return (
         
-        <UserContainer>
+        <UserShowContainer>
+        <NavBar />
          <div><img src={props.kid.img} alt="User" /></div>
         <div><HTwo>Child: {props.kid.firstName} {props.kid.lastName}</HTwo></div> 
         <div><HTwo>Babysit On: {props.kid.schedule}</HTwo></div>
@@ -31,7 +32,7 @@ const KidShow = (props) => {
         {/* <div><Button onClick={() => { this.deleteUser(this.props.match.params.userId) }}>Delete User</Button></div> */}
        
          <Activity activities = {props.kid.activities}/>
-        </UserContainer>
+        </UserShowContainer>
     )
 
 }

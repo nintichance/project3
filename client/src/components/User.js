@@ -10,7 +10,6 @@ const User = (props) => {
     return (
         <UserContainer>
             <div>
-            {/* <h1>Hello from {props.firstName}</h1> */}
              <Link to={`users/${props.userId}`}> <Image src={props.img} alt = "Placeholder User"/></Link>
              </div>
         </UserContainer>

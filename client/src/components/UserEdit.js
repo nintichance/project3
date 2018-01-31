@@ -18,13 +18,10 @@ class UserEdit extends Component {
             redirect: false
         }
         this.state = { ...this.defaultState }
-        console.log(`FORM STATE:`, this.state.updatedUser)
     }
     handleInputChange = (event) => {
-        console.log("IN HANDLECHANGE")
         const attribute = event.target.name
         let value = event.target.value
-        console.log("ATTRIBUTE", attribute, "VALUE", value)
         const updatedUser = {...this.state.updatedUser}
         updatedUser[attribute] = value
         this.setState({updatedUser})
@@ -44,7 +41,6 @@ class UserEdit extends Component {
 
 
 
-    //REDIRECT TO USERS PAGE
     render() {
         return (
             <UserFormContainer>

@@ -5,8 +5,10 @@ import axios from 'axios'
 import { UserShowContainer } from './styled-components/Containers'
 import { Button } from './styled-components/Button'
 import KidPage from './KidPage'
-import { UserShowImageContainer, IconContainer} from './styled-components/Images'
+import NavBar from './NavBar'
+import { UserShowImageContainer, IconContainer } from './styled-components/Images'
 import { HOne } from './styled-components/HeaderFont'
+import { Nav } from './styled-components/Nav'
 
 
 import UserEdit from './UserEdit'
@@ -21,7 +23,7 @@ class UserShow extends Component {
             kids: [],
             kid: {},
             // activities: [],
-            redirect: false,
+            redirectToUsers: false,
             showKids: false,
             showEdit: false,
             showKid: false
@@ -55,15 +57,15 @@ class UserShow extends Component {
 
     }
 
-    redirectToUser = () => {
-        this.setState({ redirect: true })
+    redirectToUsers = () => {
+        this.setState({ redirectToUsers: true })
     }
 
     async deleteUser(userId) {
         try {
             console.log('DELETE', userId)
             await axios.get('/api/users/' + userId + '/delete')
-            this.redirectToUser()
+            this.redirectToUsers()
             window.location.reload()
 
         }
@@ -71,7 +73,6 @@ class UserShow extends Component {
             console.log(err)
         }
     }
-
 
     async updateUser(userId, updatedUser) {
         try {
@@ -84,7 +85,6 @@ class UserShow extends Component {
             console.log(err)
         }
     }
-    //GET Kid's Information
 
     async getKidData() {
         try {
@@ -97,7 +97,6 @@ class UserShow extends Component {
             console.log(err)
         }
     }
-
     async getOneKid(userId, kidId) {
         console.log("CLICKED!")
         console.log("HEREHRE", userId, kidId)
@@ -138,45 +137,44 @@ class UserShow extends Component {
         this.setState({ showEdit: true })
     }
 
-
     render() {
-        console.log("Rendering UserShow")
         const userId = this.props.match.params.userId
-        console.log("USERID1", userId)
+        //Allows Each Component Nested within UserShow to Show Independently        
         let userCondition
-        if (this.state.redirect === true) {
+        if (this.state.redirectToUsers === true) {
             userCondition = <Redirect to="/users">Users</Redirect>
         } else if (this.state.showKids === true) {
-            userCondition = <KidPage 
-                            activities="Nothing"
-                            kids={this.state.kids} 
-                            getActivities="testing"
-                            getOneKid={this.getOneKid} 
-                            userId={this.props.match.params.userId} 
-                            kid={this.state.kid} 
-                            showKids={this.state.showKids} 
-                            showKid={this.state.showKid} />
+            userCondition = <KidPage
+                activities="Nothing"
+                kids={this.state.kids}
+                getActivities="testing"
+                getOneKid={this.getOneKid}
+                userId={this.props.match.params.userId}
+                kid={this.state.kid}
+                showKids={this.state.showKids}
+                showKid={this.state.showKid}
+            />
 
         } else if (this.state.showEdit === true) {
             userCondition = <UserEdit user={this.state.user} userId={this.props.match.params.userId} updateUser={this.updateUser} />
         } else {
             userCondition =
-            <div>
-                <div> <HOne>{this.state.user.firstName} {this.state.user.lastName}</HOne></div>
-                <UserShowImageContainer>
-                    <img src={this.state.user.img} alt="User" />
-                    <IconContainer>
-                        <img src="https://i.imgur.com/mhDL1HQ.png" onClick={() => { this.deleteUser(this.props.match.params.userId) }} />
-                        <br/>
-                        <img src="https://i.imgur.com/4Llf474.png" onClick={this.showEdit} />
-                        <br/>
-                        <Link to="/users"><img src="https://i.imgur.com/JUcXJiy.png" /></Link>
-
-                    </IconContainer>
-                </UserShowImageContainer>
-                <Link to="/new-kid"><Button>New Kid</Button></Link>
-                <Link to={`/users/${this.props.match.params.userId}/kids`}><Button onClick={this.showKids}>Kids</Button></Link>
-            </div>
+                <div>
+                    <NavBar />
+                    <div> <HOne>{this.state.user.firstName} {this.state.user.lastName}</HOne></div>
+                    <UserShowImageContainer>
+                        <img src={this.state.user.img} alt="User" />
+                        <IconContainer>
+                            <img src="https://i.imgur.com/mhDL1HQ.png" onClick={() => { this.deleteUser(this.props.match.params.userId) }} />
+                            <br />
+                            <img src="https://i.imgur.com/4Llf474.png" onClick={this.showEdit} />
+                            <br />
+                            <Link to="/users"><img src="https://i.imgur.com/JUcXJiy.png" /></Link>
+                        </IconContainer>
+                    </UserShowImageContainer>
+                    <Link to="/new-kid"><Button>New Kid</Button></Link>
+                    <Link to={`/users/${this.props.match.params.userId}/kids`}><Button onClick={this.showKids}>Kids</Button></Link>
+                </div>
         }
 
         return (

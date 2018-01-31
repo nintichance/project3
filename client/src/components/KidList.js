@@ -1,14 +1,12 @@
 import React from 'react'
 
-import { UserListContainer } from './styled-components/Containers'
+import { UserShowContainer } from './styled-components/Containers'
 
 import Kid from './Kid'
 
 const KidList = (props) => {
 
-    console.log("EEEE", props.kid)
     const kidList = props.kids.map((kid, index) => {
-        console.log("ACT3333", props.activities, index)
         return (
             <Kid
                 activities={props.activities}
@@ -41,9 +39,9 @@ const KidList = (props) => {
         )
     })
     return (
-        <UserListContainer>
+        <UserShowContainer>
             {kidList}
-        </UserListContainer>
+        </UserShowContainer>
     )
 }
 
