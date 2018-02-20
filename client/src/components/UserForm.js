@@ -45,7 +45,6 @@ class UserForm extends Component {
         return (
             <UserFormContainer>
 
-                Hello from UserForm
                 {this.state.redirect ? <Redirect to="/users">Users</Redirect> :
                 <FormWrapper>
                       <FormBody onSubmit={this.addNewUser}>

@@ -10,7 +10,7 @@ const Home = () => {
     return(
         <HomeContainer>
             <NavBar />
-            <HomeHeader>'yello!'</HomeHeader>
+            <HomeHeader>sat</HomeHeader>
             <HomeDescription>The babysitting app that lets you keep track of your kids' schedules!</HomeDescription>
             <br/>
             <br/>
